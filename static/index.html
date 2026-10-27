@@ -7,7 +7,7 @@ body.night{--bg:linear-gradient(180deg,#1d140c,#2b1d12 55%,#140e08);--tx:#f6e7cc
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font-family:'Cormorant Garamond',Georgia,serif;min-height:100vh;padding:20px 16px 44px;text-align:center;font-size:19px}
 h1{font-weight:400;font-size:34px;line-height:1.1;margin:8px 0 6px;letter-spacing:.02em}p{line-height:1.5;margin:8px 0}
 .small{font-size:13px;letter-spacing:.28em;color:var(--mut);text-transform:uppercase;font-weight:600}
-.intro{font-size:19px;line-height:1.5;margin:10px 4px 8px}
+.intro{font-size:17px;line-height:1.45;margin:8px 6px}
 .rule{display:flex;align-items:center;gap:10px;justify-content:center;margin:6px 24px 10px;color:var(--gold)}.rule:before,.rule:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--edge))}.rule:after{transform:scaleX(-1)}
 button{font:inherit;font-size:19px;font-weight:600;border:0;border-radius:999px;padding:13px 20px;margin:6px 4px;background:var(--btn);color:var(--btnt);width:calc(100% - 8px);box-shadow:0 4px 14px #b98a4533}
 button:disabled{background:var(--rail);color:var(--mut);box-shadow:none}
@@ -99,39 +99,45 @@ function theme(){}
 function snd(){$('snd').textContent=SND?'🔔 Звук: вкл':'🔕 Звук: выкл'}
 function pol(cx,cy,r,deg){const a=deg*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]}
 const f1=v=>Math.round(v*10)/10;
-const dia=(cx,cy,s)=>'<path d="M'+cx+' '+(cy-s)+' L'+f1(cx+s*.62)+' '+cy+' L'+cx+' '+(cy+s)+' L'+f1(cx-s*.62)+' '+cy+'Z" fill="@F"/>';
+const dia=(cx,cy,s)=>'<path d="M'+cx+' '+(cy-s)+' L'+f1(cx+s*.55)+' '+cy+' L'+cx+' '+(cy+s)+' L'+f1(cx-s*.55)+' '+cy+'Z" fill="@F"/>';
 const dot=(cx,cy,r)=>'<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="@F"/>';
 const pth=d=>'<path d="'+d+'"/>';
-function star8(cx,cy,L,l){let d='';for(let i=0;i<8;i++){const p=pol(cx,cy,i%2?l:L,i*45-90);d+='M'+cx+' '+cy+' L'+f1(p[0])+' '+f1(p[1])+' '}return pth(d)+dot(cx,cy,2.6)}
-const band=()=>pth('M70 240 Q200 268 330 240 M70 258 Q200 286 330 258 M70 240 L70 258 M330 240 L330 258')+dia(200,265,8);
-const ey=x=>240+14*(1-Math.pow((x-200)/130,2));
-function beads(){let o='';for(let x=88;x<=312;x+=24)o+=dot(x,f1(ey(x)+9),2.6);return o}
-const leaf=(x,y,len,ang)=>'<path transform="translate('+x+' '+y+') rotate('+ang+')" d="M0 0 Q'+f1(len*.4)+' '+f1(-len*.3)+' '+len+' 0 Q'+f1(len*.4)+' '+f1(len*.3)+' 0 0Z"/>';
-function rays(cx,cy,r0,list){let d='';list.forEach(a=>{const p=pol(cx,cy,r0,a[0]),q=pol(cx,cy,a[1],a[0]);d+='M'+f1(p[0])+' '+f1(p[1])+' L'+f1(q[0])+' '+f1(q[1])+' '});return pth(d)}
-const ringDots=(cx,cy,r,angs,s)=>angs.map(a=>{const p=pol(cx,cy,r,a);return dot(f1(p[0]),f1(p[1]),s)}).join('');
-const CRN={
-sun:[band(),
- '<circle cx="200" cy="196" r="24"/><circle cx="200" cy="196" r="17"/>'+dot(200,196,7)+pth('M184 214 L178 254 M216 214 L222 254'),
- rays(200,196,32,[[-165,58],[-150,74],[-135,58],[-120,80],[-105,60],[-90,92],[-75,60],[-60,80],[-45,58],[-30,74],[-15,58]]),
- pth('M92 247 L108 128 L130 251 M270 251 L292 128 L308 247 M138 251 L152 190 L170 238 M230 238 L248 190 L262 251')+dot(108,122,4)+dot(292,122,4)+dot(152,184,3)+dot(248,184,3)+beads(),
- pth('M96 196 A104 104 0 0 1 304 196')+dia(128,112,7)+dia(272,112,7)+dia(200,72,8),
- star8(200,40,22,11)+pth('M200 62 L200 92')+ringDots(200,196,104,[-160,-135,-110,-70,-45,-20],3)],
-moon:[band(),
- pth('M200 128 C242 168 242 214 200 250 C158 214 158 168 200 128Z')+pth('M200 150 C226 176 226 206 200 232 C174 206 174 176 200 150Z')+dot(200,192,5),
- pth('M100 128 A50 50 0 0 0 112 222 A70 70 0 0 1 100 128Z')+pth('M300 128 A50 50 0 0 1 288 222 A70 70 0 0 0 300 128Z'),
- leaf(172,252,50,-112)+leaf(152,254,50,-142)+leaf(130,254,46,-168)+leaf(228,252,50,-68)+leaf(248,254,50,-38)+leaf(270,254,46,-12)+pth('M118 232 Q140 205 170 222 M282 232 Q260 205 230 222'),
- beads()+dot(100,122,4)+dot(300,122,4)+dot(200,120,5)+dot(172,190,3.5)+dot(228,190,3.5),
- pth('M184 34 A18 18 0 0 0 216 34 A22 22 0 0 1 184 34Z')+pth('M184 56 A18 18 0 0 0 216 56 A22 22 0 0 1 184 56Z')+dot(200,82,4)+pth('M88 190 A112 112 0 0 1 312 190')+ringDots(200,190,112,[-150,-120,-60,-30],3)],
-star:[band(),
- pth('M200 118 L230 190 L200 262 L170 190Z')+pth('M200 150 L215 190 L200 230 L185 190Z')+dot(200,190,4),
- star8(200,50,22,10)+pth('M200 72 L200 118'),
- pth('M80 249 L104 130 L134 253 M266 253 L296 130 L320 249 M138 250 L158 165 L182 232 M218 232 L242 165 L262 250')+dia(104,124,7)+dia(296,124,7)+dia(158,159,6)+dia(242,159,6),
- dia(130,205,7)+dia(270,205,7)+dia(176,150,5)+dia(224,150,5)+beads(),
- pth('M92 190 A108 108 0 0 1 308 190')+dia(76,168,5)+dia(324,168,5)+dia(134,98,5)+dia(266,98,5)+ringDots(200,190,108,[-150,-120,-60,-30],3)]};
-function crownInner(k,n){const g=CRN[k],A='fill="none" stroke-linecap="round" stroke-linejoin="round"';let o='<g transform="translate(-22 -8) scale(1.25)">';
- o+='<g '+A+' stroke="#8f7040" stroke-opacity=".85" stroke-width="2.4" stroke-dasharray="0.1 5.2">'+g.join('').split('@F').join('none')+'</g>';
- g.forEach((s,i)=>{const p=n>=ST[i]?1:(i>0&&n>ST[i-1]?(n-ST[i-1])/(ST[i]-ST[i-1]):0);
-  if(p>0)o+='<g '+A+' stroke="#b07a28" stroke-width="2.2" filter="url(#glow)" opacity="'+p.toFixed(2)+'">'+s.split('@F').join('#fff0c4')+'</g>'});
+const ring=(cx,cy,r,angs,s)=>angs.map(a=>{const p=pol(cx,cy,r,a);return dot(f1(p[0]),f1(p[1]),s)}).join('');
+function star8(cx,cy,L,l){let d='';for(let i=0;i<8;i++){const p=pol(cx,cy,i%2?l:L,i*45-90);d+='M'+cx+' '+cy+' L'+f1(p[0])+' '+f1(p[1])+' '}return pth(d)+dot(cx,cy,2.4)}
+const BAND=pth('M64 246 Q200 280 336 246 M64 228 Q200 262 336 228 M64 228 L64 246 M336 228 L336 246')+dia(200,254,6.5);
+function beads(x0,x1,st){let o='';for(let x=x0;x<=x1;x+=st){const y=237+(1-Math.pow((x-200)/136,2))*15;o+=dot(x,f1(y),2)}return o}
+// профиль зубцов: [x,y] от левого угла к центральной вершине; чётные индексы — острия, нечётные — впадины
+const PR={
+ sun:[[66,230],[72,150],[108,214],[126,108],[160,204],[200,62]],
+ moon:[[66,230],[80,160],[112,212],[134,126],[164,206],[200,84]],
+ star:[[66,230],[70,134],[110,214],[130,92],[162,206],[200,50]]};
+function prof(pts,sc,cy){const m=p=>[f1(200+(p[0]-200)*sc),f1(cy+(p[1]-cy)*sc)];const q=pts.map(m);let d='M'+q[0][0]+' '+q[0][1];
+ for(let i=1;i<q.length;i++){const p=q[i-1],c=q[i],up=c[1]<p[1];
+  const cx=up?p[0]+(c[0]-p[0])*.12:c[0]-(c[0]-p[0])*.12, cy2=p[1]+(c[1]-p[1])*.6;
+  d+=' Q'+f1(cx)+' '+f1(cy2)+' '+c[0]+' '+c[1]}
+ return pth(d)}
+function tips(pts,sc,cy){const q=pts.filter((_,i)=>i%2===0&&i>0);return q}
+const SIG={
+ sun:{c:'<circle cx="200" cy="178" r="22"/><circle cx="200" cy="178" r="15.5"/>'+dot(200,178,6.5)+(()=>{let d='';for(let i=0;i<9;i++){const a=-170+i*20,p=pol(200,178,28,a),q=pol(200,178,i%2?38:46,a);d+='M'+f1(p[0])+' '+f1(p[1])+' L'+f1(q[0])+' '+f1(q[1])+' '}return pth(d)})()},
+ moon:{c:pth('M200 124 C240 160 240 208 200 244 C160 208 160 160 200 124Z')+pth('M200 146 C224 172 224 202 200 228 C176 202 176 172 200 146Z')+dot(200,186,4.5),
+       h:pth('M92 110 C46 132 40 206 100 232 C70 202 70 150 92 110Z')},
+ star:{c:pth('M200 112 L228 186 L200 256 L172 186Z')+pth('M200 146 L214 186 L200 226 L186 186Z')+dot(200,186,3.6)}};
+function build(k){const pts=PR[k],t=pts.filter((_,i)=>i%2===0&&i>0);
+ const outer=prof(pts,1,246),inner=prof(pts,.78,236);
+ const jew=t.map((p,i)=>i<t.length-1?dia(p[0],p[1]-9,5.5):'').join('');
+ return [
+  {c:BAND},
+  Object.assign({},SIG[k]),
+  {h:outer},
+  {h:inner+beads(84,184,20)},
+  {h:jew+dot(pts[1][0],pts[1][1]-8,2.2),c:dia(200,pts[5][1]-12,7)},
+  {c:pth('M56 214 A144 144 0 0 1 344 214')+star8(200,pts[5][1]-40>14?pts[5][1]-34:30,18,8)+ring(200,200,144,[-160,-135,-45,-20],2.4)}]}
+const CRN={sun:build('sun'),moon:build('moon'),star:build('star')};
+function stagePath(g){let s='';if(g.h)s+='<g>'+g.h+'</g><g transform="translate(400 0) scale(-1 1)">'+g.h+'</g>';if(g.c)s+=g.c;return s}
+function crownInner(k,n){const g=CRN[k],A='fill="none" stroke-linecap="round" stroke-linejoin="round"';let o='<g transform="translate(-30 -6) scale(1.3)">';
+ g.forEach((st,i)=>{const sh=stagePath(st);if(!sh)return;
+  const p=n>=ST[i]?1:(i>0&&n>ST[i-1]?(n-ST[i-1])/(ST[i]-ST[i-1]):0);
+  o+='<g '+A+' stroke="#b8863a" stroke-opacity="'+(n<0?.85:(.42+.58*p)).toFixed(2)+'" stroke-width="'+(n<0?1.5:(1.1+.7*p)).toFixed(2)+'"'+(p>0?' filter="url(#glow)"':'')+'>'+sh.split('@F').join(p>0?'#fff3cf':'none')+'</g>'});
  return o+'</g>'}
 const crownSVG=(k,n)=>'<svg viewBox="0 0 457 385">'+crownInner(k,n)+'</svg>';
 function crownHTML(k,n){return '<div class="frame"><svg viewBox="0 0 457 385">'+crownInner(k,n)+decoLayer(S.decos||[],S.seed||1)+'</svg></div>'}
