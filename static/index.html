@@ -2,7 +2,7 @@
 <title>Твой венец</title><script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:linear-gradient(180deg,#f8eddb,#f1dfc0 55%,#e8cfa4);--tx:#4a3420;--mut:#8a7352;--gold:#b98a45;--card:#fffaf0cc;--edge:#cfa968;--btn:linear-gradient(180deg,#f3d896,#d9ad5f);--btnt:#3a2610;--rail:#e4d1ac}
+:root{--bg:linear-gradient(180deg,#fcf6ea,#f8eddb 55%,#f1dfc0);--tx:#4a3420;--mut:#8a7352;--gold:#b98a45;--card:#fffaf0cc;--edge:#cfa968;--btn:linear-gradient(180deg,#f3d896,#d9ad5f);--btnt:#3a2610;--rail:#e4d1ac}
 body.night{--bg:linear-gradient(180deg,#1d140c,#2b1d12 55%,#140e08);--tx:#f6e7cc;--mut:#bfa985;--gold:#e6bf82;--card:#ffffff0d;--edge:#b7955f88;--btn:linear-gradient(180deg,#f0d38e,#d6a85a);--btnt:#2a1c10;--rail:#4a3a28}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font-family:'Cormorant Garamond',Georgia,serif;min-height:100vh;padding:20px 16px 44px;text-align:center;font-size:19px}
 h1{font-weight:400;font-size:34px;line-height:1.1;margin:8px 0 6px;letter-spacing:.02em}p{line-height:1.5;margin:8px 0}
@@ -12,9 +12,9 @@ h1{font-weight:400;font-size:34px;line-height:1.1;margin:8px 0 6px;letter-spacin
 button{font:inherit;font-size:19px;font-weight:600;border:0;border-radius:999px;padding:13px 20px;margin:6px 4px;background:var(--btn);color:var(--btnt);width:calc(100% - 8px);box-shadow:0 4px 14px #b98a4533}
 button:disabled{background:var(--rail);color:var(--mut);box-shadow:none}
 .ghost{background:transparent;border:1px solid var(--edge);color:var(--gold);box-shadow:none}.snd{background:transparent;border:1px solid var(--edge);color:var(--mut);font-size:16px;padding:9px 14px;width:auto;box-shadow:none}
-.cc{border:1px solid var(--edge);border-radius:22px;padding:10px 10px 14px;margin:14px 0;background:var(--card);cursor:pointer;box-shadow:0 8px 26px #7a5a2a1f}
+.cc{padding:6px 10px 10px;margin:8px 0 14px;cursor:pointer;border-bottom:1px solid #cfa96844}
 .cc img{width:68%;margin:0 auto;border-radius:16px;display:block;aspect-ratio:457/385;object-fit:cover}.cc h2{font-weight:600;font-size:25px;margin:10px 0 0}.cc span{color:var(--mut);font-size:17px}
-#amulet{margin:10px auto 4px;max-width:340px}.frame{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--edge);box-shadow:0 14px 44px #6b4a2455;aspect-ratio:457/385;background:linear-gradient(180deg,#f3e3c3,#e8d0a3)}
+#amulet{margin:10px auto 4px;max-width:340px}.frame{position:relative;aspect-ratio:457/385}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.frame svg{position:absolute;inset:0;width:100%;height:100%}
 .glow .frame{animation:gl 1.3s ease-out}@keyframes gl{0%{filter:brightness(1.7) drop-shadow(0 0 26px #ffe9a8)}100%{filter:none}}
 .count{font-size:34px;color:var(--gold);margin:8px 0 0;font-weight:600}.cap{font-style:italic;color:var(--mut);margin:0 0 2px}
@@ -25,8 +25,8 @@ button:disabled{background:var(--rail);color:var(--mut);box-shadow:none}
 .path i.ms{border-width:1.8px;font-size:13px}.path i.cur{animation:pl 1.8s ease-in-out infinite}@keyframes pl{50%{box-shadow:0 0 15px 3px #efc881bb}}
 .next{color:var(--gold);font-size:19px;margin:2px 0 6px;font-weight:600}
 .pr{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:6px 16px 2px;background:#2a1d12;border-radius:16px;padding:8px}.pr:empty{display:none}.pr b{display:inline-flex}
-.tl{max-width:420px;margin-left:auto;margin-right:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 8px;margin:12px 2px 4px}.tl>div{font-size:14px;line-height:1.15;color:var(--tx)}.tl .im{border-radius:14px;overflow:hidden;border:1px solid var(--edge);background:linear-gradient(180deg,#f3e3c3,#e8d0a3);aspect-ratio:457/385;margin-bottom:4px}.tl b{display:block;font-size:15px;color:var(--gold)}
-.tl .im svg,.sv svg{width:100%;height:100%;display:block}.sv{background:linear-gradient(180deg,#f3e3c3,#e8d0a3);border-radius:16px;width:74%;margin:0 auto;aspect-ratio:457/385}
+.tl{max-width:420px;margin-left:auto;margin-right:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 8px;margin:12px 2px 4px}.tl>div{font-size:14px;line-height:1.15;color:var(--tx)}.tl .im{aspect-ratio:457/385;margin-bottom:4px}.tl b{display:block;font-size:15px;color:var(--gold)}
+.tl .im svg,.sv svg{width:100%;height:100%;display:block}.sv{width:80%;margin:0 auto;aspect-ratio:457/385}
 .tl .lk .im{display:flex;align-items:center;justify-content:center;color:#9c8766;font-size:22px;background:#e4d1ac55}.tl .lk{color:var(--mut)}
 .tw{animation:tw 3.6s ease-in-out infinite}@keyframes tw{50%{opacity:.55}}
 .gl2{transform-box:fill-box;transform-origin:center;opacity:0;animation:gl2 3.4s ease-in-out infinite}.g3{animation-duration:2.6s}
@@ -97,47 +97,42 @@ function openDeco(w){$('dcw').value=w;$('dc').classList.add('on')}
 let S=null,NIGHT=localStorage.getItem('theme3')==='night';
 function theme(){}
 function snd(){$('snd').textContent=SND?'🔔 Звук: вкл':'🔕 Звук: выкл'}
-function pol(cx,cy,r,deg){const a=deg*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]}
 const f1=v=>Math.round(v*10)/10;
-const dia=(cx,cy,s)=>'<path d="M'+cx+' '+(cy-s)+' L'+f1(cx+s*.55)+' '+cy+' L'+cx+' '+(cy+s)+' L'+f1(cx-s*.55)+' '+cy+'Z" fill="@F"/>';
+const pol=(cx,cy,r,deg)=>{const a=deg*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]};
+const dia=(cx,cy,s)=>'<path d="M'+cx+' '+(cy-s)+' L'+f1(cx+s*.5)+' '+cy+' L'+cx+' '+(cy+s)+' L'+f1(cx-s*.5)+' '+cy+'Z" fill="@F"/>';
 const dot=(cx,cy,r)=>'<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="@F"/>';
 const pth=d=>'<path d="'+d+'"/>';
-const ring=(cx,cy,r,angs,s)=>angs.map(a=>{const p=pol(cx,cy,r,a);return dot(f1(p[0]),f1(p[1]),s)}).join('');
-function star8(cx,cy,L,l){let d='';for(let i=0;i<8;i++){const p=pol(cx,cy,i%2?l:L,i*45-90);d+='M'+cx+' '+cy+' L'+f1(p[0])+' '+f1(p[1])+' '}return pth(d)+dot(cx,cy,2.4)}
-const BAND=pth('M64 246 Q200 280 336 246 M64 228 Q200 262 336 228 M64 228 L64 246 M336 228 L336 246')+dia(200,254,6.5);
-function beads(x0,x1,st){let o='';for(let x=x0;x<=x1;x+=st){const y=237+(1-Math.pow((x-200)/136,2))*15;o+=dot(x,f1(y),2)}return o}
-// профиль зубцов: [x,y] от левого угла к центральной вершине; чётные индексы — острия, нечётные — впадины
-const PR={
- sun:[[66,230],[72,150],[108,214],[126,108],[160,204],[200,62]],
- moon:[[66,230],[80,160],[112,212],[134,126],[164,206],[200,84]],
- star:[[66,230],[70,134],[110,214],[130,92],[162,206],[200,50]]};
-function prof(pts,sc,cy){const m=p=>[f1(200+(p[0]-200)*sc),f1(cy+(p[1]-cy)*sc)];const q=pts.map(m);let d='M'+q[0][0]+' '+q[0][1];
- for(let i=1;i<q.length;i++){const p=q[i-1],c=q[i],up=c[1]<p[1];
-  const cx=up?p[0]+(c[0]-p[0])*.12:c[0]-(c[0]-p[0])*.12, cy2=p[1]+(c[1]-p[1])*.6;
-  d+=' Q'+f1(cx)+' '+f1(cy2)+' '+c[0]+' '+c[1]}
- return pth(d)}
-function tips(pts,sc,cy){const q=pts.filter((_,i)=>i%2===0&&i>0);return q}
+const spark=(cx,cy,s)=>pth('M'+cx+' '+(cy-s)+' Q'+cx+' '+cy+' '+(cx+s)+' '+cy+' Q'+cx+' '+cy+' '+cx+' '+(cy+s)+' Q'+cx+' '+cy+' '+(cx-s)+' '+cy+' Q'+cx+' '+cy+' '+cx+' '+(cy-s)+'Z');
+const ringDots=(cx,cy,r,angs,s)=>angs.map(a=>{const p=pol(cx,cy,r,a);return dot(f1(p[0]),f1(p[1]),s)}).join('');
+function ctrl(V,P){const dx=P[0]-V[0],dy=P[1]-V[1];return [[V[0]+dx*.1,V[1]+dy*.55],[P[0]-dx*.45,P[1]-dy*.25]]}
+function edge(A,B){let c1,c2;if(B[1]<A[1]){[c1,c2]=ctrl(A,B)}else{[c2,c1]=ctrl(B,A)}return ' C'+f1(c1[0])+' '+f1(c1[1])+' '+f1(c2[0])+' '+f1(c2[1])+' '+B[0]+' '+B[1]}
+function half(pts){let d='M'+pts[0][0]+' '+pts[0][1];for(let i=1;i<pts.length;i++)d+=edge(pts[i-1],pts[i]);return pth(d)}
+const BAND=pth('M64 246 Q200 282 336 246 M64 230 Q200 266 336 230 M64 230 L64 246 M336 230 L336 246')+dia(200,257,6)+(()=>{let o='';for(let x=88;x<=312;x+=22){if(Math.abs(x-200)<14)continue;const y=238+(1-Math.pow((x-200)/136,2))*17;o+=dot(x,f1(y),1.7)}return o})();
+const PTS={
+ sun:[[66,230],[90,136],[120,210],[148,100],[168,204],[200,60]],
+ moon:[[66,230],[104,158],[136,214],[168,116],[184,208],[200,84]],
+ star:[[66,230],[84,110],[116,212],[140,70],[170,204],[200,36]]};
+function jewels(k){const p=PTS[k];return dia(p[1][0],p[1][1]-9,5)+dia(p[3][0],p[3][1]-9,5)}
 const SIG={
- sun:{c:'<circle cx="200" cy="178" r="22"/><circle cx="200" cy="178" r="15.5"/>'+dot(200,178,6.5)+(()=>{let d='';for(let i=0;i<9;i++){const a=-170+i*20,p=pol(200,178,28,a),q=pol(200,178,i%2?38:46,a);d+='M'+f1(p[0])+' '+f1(p[1])+' L'+f1(q[0])+' '+f1(q[1])+' '}return pth(d)})()},
- moon:{c:pth('M200 124 C240 160 240 208 200 244 C160 208 160 160 200 124Z')+pth('M200 146 C224 172 224 202 200 228 C176 202 176 172 200 146Z')+dot(200,186,4.5),
-       h:pth('M92 110 C46 132 40 206 100 232 C70 202 70 150 92 110Z')},
- star:{c:pth('M200 112 L228 186 L200 256 L172 186Z')+pth('M200 146 L214 186 L200 226 L186 186Z')+dot(200,186,3.6)}};
-function build(k){const pts=PR[k],t=pts.filter((_,i)=>i%2===0&&i>0);
- const outer=prof(pts,1,246),inner=prof(pts,.78,236);
- const jew=t.map((p,i)=>i<t.length-1?dia(p[0],p[1]-9,5.5):'').join('');
+ sun:{c:'<circle cx="200" cy="184" r="19"/><circle cx="200" cy="184" r="12.5"/>'+dot(200,184,5)+ringDots(200,184,28,[-150,-120,-90,-60,-30,0,30,150,180],1.7)},
+ moon:{c:pth('M200 118 C232 152 232 200 200 232 C168 200 168 152 200 118Z')+pth('M200 142 C218 164 218 190 200 212 C182 190 182 164 200 142Z')+dot(200,177,4),
+       h:pth('M86 96 C40 116 34 188 90 214 C60 184 62 134 86 96Z')},
+ star:{c:pth('M200 98 L224 176 L200 240 L176 176Z')+pth('M200 134 L212 176 L200 214 L188 176Z')+dot(200,176,3.2)}};
+function build(k){const p=PTS[k];
  return [
   {c:BAND},
   Object.assign({},SIG[k]),
-  {h:outer},
-  {h:inner+beads(84,184,20)},
-  {h:jew+dot(pts[1][0],pts[1][1]-8,2.2),c:dia(200,pts[5][1]-12,7)},
-  {c:pth('M56 214 A144 144 0 0 1 344 214')+star8(200,pts[5][1]-40>14?pts[5][1]-34:30,18,8)+ring(200,200,144,[-160,-135,-45,-20],2.4)}]}
+  {h:half(p)},
+  {h:dot(p[2][0],p[2][1]-10,2.4)+dot(p[4][0]-2,p[4][1]-12,2.2),c:ringDots(200,p[5][1]+14,0,[0],0)},
+  {h:jewels(k)+dot(p[1][0],p[1][1]-20,1.8)+dot(p[3][0],p[3][1]-20,1.8),c:dia(200,p[5][1]-12,6.5)},
+  {h:spark(70,92,7)+spark(104,52,5)+dot(60,128,1.8),c:spark(200,Math.max(16,p[5][1]-34),11)}]}
 const CRN={sun:build('sun'),moon:build('moon'),star:build('star')};
 function stagePath(g){let s='';if(g.h)s+='<g>'+g.h+'</g><g transform="translate(400 0) scale(-1 1)">'+g.h+'</g>';if(g.c)s+=g.c;return s}
-function crownInner(k,n){const g=CRN[k],A='fill="none" stroke-linecap="round" stroke-linejoin="round"';let o='<g transform="translate(-30 -6) scale(1.3)">';
+function crownInner(k,n){const g=CRN[k],A='fill="none" stroke-linecap="round" stroke-linejoin="round"';let o='<g transform="translate(-30 4) scale(1.3)">';
  g.forEach((st,i)=>{const sh=stagePath(st);if(!sh)return;
-  const p=n>=ST[i]?1:(i>0&&n>ST[i-1]?(n-ST[i-1])/(ST[i]-ST[i-1]):0);
-  o+='<g '+A+' stroke="#b8863a" stroke-opacity="'+(n<0?.85:(.42+.58*p)).toFixed(2)+'" stroke-width="'+(n<0?1.5:(1.1+.7*p)).toFixed(2)+'"'+(p>0?' filter="url(#glow)"':'')+'>'+sh.split('@F').join(p>0?'#fff3cf':'none')+'</g>'});
+  if(n<0&&i!==0&&i!==2)return;
+  const p=n<0?1:(n>=ST[i]?1:(i>0&&n>ST[i-1]?(n-ST[i-1])/(ST[i]-ST[i-1]):0));
+  o+='<g '+A+' stroke="'+(p>0?'#b98a3f':'#bda57a')+'" stroke-opacity="'+(p>0?(.55+.45*p):.32).toFixed(2)+'" stroke-width="'+(p>0?1.5:1.1)+'">'+sh.split('@F').join(p>0?'#fff4d6':'none')+'</g>'});
  return o+'</g>'}
 const crownSVG=(k,n)=>'<svg viewBox="0 0 457 385">'+crownInner(k,n)+'</svg>';
 function crownHTML(k,n){return '<div class="frame"><svg viewBox="0 0 457 385">'+crownInner(k,n)+decoLayer(S.decos||[],S.seed||1)+'</svg></div>'}
