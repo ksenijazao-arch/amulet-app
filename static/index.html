@@ -14,7 +14,7 @@ button:disabled{background:var(--rail);color:var(--mut);box-shadow:none}
 .ghost{background:transparent;border:1px solid var(--edge);color:var(--gold);box-shadow:none}.snd{background:transparent;border:1px solid var(--edge);color:var(--mut);font-size:16px;padding:9px 14px;width:auto;box-shadow:none}
 .cc{border:1px solid var(--edge);border-radius:22px;padding:10px 10px 14px;margin:14px 0;background:var(--card);cursor:pointer;box-shadow:0 8px 26px #7a5a2a1f}
 .cc img{width:68%;margin:0 auto;border-radius:16px;display:block;aspect-ratio:457/385;object-fit:cover}.cc h2{font-weight:600;font-size:25px;margin:10px 0 0}.cc span{color:var(--mut);font-size:17px}
-#amulet{margin:10px auto 4px;max-width:340px}.frame{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--edge);box-shadow:0 14px 44px #6b4a2455;aspect-ratio:457/385;background:#2a1d12}
+#amulet{margin:10px auto 4px;max-width:340px}.frame{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--edge);box-shadow:0 14px 44px #6b4a2455;aspect-ratio:457/385;background:linear-gradient(180deg,#f3e3c3,#e8d0a3)}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.frame svg{position:absolute;inset:0;width:100%;height:100%}
 .glow .frame{animation:gl 1.3s ease-out}@keyframes gl{0%{filter:brightness(1.7) drop-shadow(0 0 26px #ffe9a8)}100%{filter:none}}
 .count{font-size:34px;color:var(--gold);margin:8px 0 0;font-weight:600}.cap{font-style:italic;color:var(--mut);margin:0 0 2px}
@@ -25,8 +25,8 @@ button:disabled{background:var(--rail);color:var(--mut);box-shadow:none}
 .path i.ms{border-width:1.8px;font-size:13px}.path i.cur{animation:pl 1.8s ease-in-out infinite}@keyframes pl{50%{box-shadow:0 0 15px 3px #efc881bb}}
 .next{color:var(--gold);font-size:19px;margin:2px 0 6px;font-weight:600}
 .pr{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:6px 16px 2px;background:#2a1d12;border-radius:16px;padding:8px}.pr:empty{display:none}.pr b{display:inline-flex}
-.tl{max-width:420px;margin-left:auto;margin-right:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 8px;margin:12px 2px 4px}.tl>div{font-size:14px;line-height:1.15;color:var(--tx)}.tl .im{border-radius:14px;overflow:hidden;border:1px solid var(--edge);background:#2a1d12;aspect-ratio:457/385;margin-bottom:4px}.tl b{display:block;font-size:15px;color:var(--gold)}
-.tl img{width:100%;height:100%;object-fit:cover;display:block}
+.tl{max-width:420px;margin-left:auto;margin-right:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 8px;margin:12px 2px 4px}.tl>div{font-size:14px;line-height:1.15;color:var(--tx)}.tl .im{border-radius:14px;overflow:hidden;border:1px solid var(--edge);background:linear-gradient(180deg,#f3e3c3,#e8d0a3);aspect-ratio:457/385;margin-bottom:4px}.tl b{display:block;font-size:15px;color:var(--gold)}
+.tl .im svg,.sv svg{width:100%;height:100%;display:block}.sv{background:linear-gradient(180deg,#f3e3c3,#e8d0a3);border-radius:16px;width:74%;margin:0 auto;aspect-ratio:457/385}
 .tl .lk .im{display:flex;align-items:center;justify-content:center;color:#9c8766;font-size:22px;background:#e4d1ac55}.tl .lk{color:var(--mut)}
 .tw{animation:tw 3.6s ease-in-out infinite}@keyframes tw{50%{opacity:.55}}
 .gl2{transform-box:fill-box;transform-origin:center;opacity:0;animation:gl2 3.4s ease-in-out infinite}.g3{animation-duration:2.6s}
@@ -52,7 +52,7 @@ button:disabled{background:var(--rail);color:var(--mut);box-shadow:none}
 <p class="love">Шаг за шагом ты идёшь к себе, а венец хранит каждый твой день.<br>Выбирай украшение сердцем: он станет единственным на свете.<span id="pe" class="hide"></span></p>
 <div class="small" style="margin-top:14px">Карта пути</div><div class="path" id="path"></div>
 <div class="small">Раскрытые ступени</div><div class="tl" id="tl"></div>
-<div style="margin-top:14px"><button class="ghost" id="sv">💾 Сохранить венец картинкой</button><button class="snd" id="th">🌙 Фон: ночь</button><button class="snd" id="snd">🔔 Звук: вкл</button><button class="ghost" id="chg">Выбрать другой венец</button></div></div>
+<div style="margin-top:14px"><button class="ghost" id="sv">💾 Сохранить венец картинкой</button><button class="snd" id="snd">🔔 Звук: вкл</button><button class="ghost" id="chg">Выбрать другой венец</button></div></div>
 <div id="ms"><div><h2 id="mst"></h2><p id="msp"></p><button id="msb">Спасибо ✨</button></div></div>
 <div id="dc"><div><h2>Чем украсим венец сегодня?</h2><p>Выбери одно украшение. Оно ляжет на венец и останется навсегда.</p><div class="dg"><button data-d="pearl"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_pearl"></svg><span>Жемчужина</span></button><button data-d="star"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_star"></svg><span>Звёздочка</span></button><button data-d="flower"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_flower"></svg><span>Цветок</span></button><button data-d="drop"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_drop"></svg><span>Капля росы</span></button><button data-d="feather"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_feather"></svg><span>Пёрышко</span></button><button data-d="moon"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_moon"></svg><span>Месяц</span></button><button data-d="crystal"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_crystal"></svg><span>Кристалл</span></button><button data-d="diamond"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_diamond"></svg><span>Алмаз</span></button><button data-d="leaf"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_leaf"></svg><span>Листик</span></button></div><input type="hidden" id="dcw"><button class="ghost" id="dcx">Не сейчас</button></div></div>
 <div id="toast"></div>
@@ -87,22 +87,58 @@ function decoShape(k,c){const l=`fill="none" stroke="${c}" stroke-width=".9" str
 
 function rnd(seed){let a=seed>>>0||1;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 
-const AREA=[228,205,[40,215],[18,92]];
+const AREA=[228,235,[30,190],[30,120]];
 function decoLayer(decos,seed){const a=AREA,r=rnd(seed*7+13);let out='',pts=[];const base=r()*360;
- decos.slice(0,60).forEach((d,i)=>{let best=null;for(let t=0;t<16;t++){const ang=(base+i*137.5+(r()-.5)*70)*Math.PI/180,k=r(),k2=r();const x=a[0]+Math.cos(ang)*(a[2][0]+(a[2][1]-a[2][0])*k),y=a[1]+Math.sin(ang)*(a[3][0]+(a[3][1]-a[3][0])*k2);if(x<14||x>443||y<120||y>300)continue;const m=pts.reduce((q,p)=>Math.min(q,Math.hypot(p[0]-x,p[1]-y)),99);if(!best||m>best[2])best=[x,y,m];if(m>17)break}
+ decos.slice(0,60).forEach((d,i)=>{let best=null;for(let t=0;t<16;t++){const ang=(base+i*137.5+(r()-.5)*70)*Math.PI/180,k=r(),k2=r();const x=a[0]+Math.cos(ang)*(a[2][0]+(a[2][1]-a[2][0])*k),y=a[1]+Math.sin(ang)*(a[3][0]+(a[3][1]-a[3][0])*k2);if(x<14||x>443||y<60||y>345)continue;const m=pts.reduce((q,p)=>Math.min(q,Math.hypot(p[0]-x,p[1]-y)),99);if(!best||m>best[2])best=[x,y,m];if(m>17)break}
   if(!best)return;pts.push(best);const c=(DECO[d]||DECO.pearl)[1],sc=.62+r()*.38,rot=r()*50-25;
   out+='<g transform="translate('+best[0].toFixed(1)+' '+best[1].toFixed(1)+') rotate('+rot.toFixed(0)+') scale('+sc.toFixed(2)+')" filter="url(#glow)" class="tw" style="animation-delay:'+(r()*4).toFixed(1)+'s">'+decoShape(d,c)+(d==='diamond'?glint(r()):'')+'</g>'});return out}
 function glint(x){const dl=(x*5).toFixed(2);return `<g class="gl2" style="animation-delay:${dl}s"><path d="M0 -12 L0 12 M-12 0 L12 0" stroke="#fff" stroke-width=".55" stroke-linecap="round" fill="none"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#fff" stroke-width=".35" stroke-linecap="round" fill="none" opacity=".7"/><circle r="1.1" fill="#fff"/></g><g class="gl2 g3" style="animation-delay:${(x*5+1.3).toFixed(2)}s"><path d="M5.5 -9 L5.5 -4 M3 -6.5 L8 -6.5" stroke="#fff" stroke-width=".5" stroke-linecap="round" fill="none"/></g>`}
 function openDeco(w){$('dcw').value=w;$('dc').classList.add('on')}
 let S=null,NIGHT=localStorage.getItem('theme3')==='night';
-function theme(){document.body.classList.toggle('night',NIGHT);$('th').textContent=NIGHT?'☀ Фон: рассвет':'🌙 Фон: ночь';try{tg.setBackgroundColor(NIGHT?'#1d140c':'#f8eddb');tg.setHeaderColor(NIGHT?'#1d140c':'#f8eddb')}catch(e){}}
+function theme(){}
 function snd(){$('snd').textContent=SND?'🔔 Звук: вкл':'🔕 Звук: выкл'}
-function crownHTML(k,n){const i=sIdx(n),nx=i<5?i+1:null,t=nx?(n-ST[i])/(ST[nx]-ST[i]):0;
- return '<div class="frame"><img src="'+img(k,i)+'" alt="">'+(nx&&t>0?'<img class="o" style="opacity:'+t.toFixed(2)+'" src="'+img(k,nx)+'" alt="">':'')+'<svg viewBox="0 0 457 385">'+decoLayer(S.decos||[],S.seed||1)+'</svg></div>'}
+function pol(cx,cy,r,deg){const a=deg*Math.PI/180;return [cx+r*Math.cos(a),cy+r*Math.sin(a)]}
+const f1=v=>Math.round(v*10)/10;
+const dia=(cx,cy,s)=>'<path d="M'+cx+' '+(cy-s)+' L'+f1(cx+s*.62)+' '+cy+' L'+cx+' '+(cy+s)+' L'+f1(cx-s*.62)+' '+cy+'Z" fill="@F"/>';
+const dot=(cx,cy,r)=>'<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="@F"/>';
+const pth=d=>'<path d="'+d+'"/>';
+function star8(cx,cy,L,l){let d='';for(let i=0;i<8;i++){const p=pol(cx,cy,i%2?l:L,i*45-90);d+='M'+cx+' '+cy+' L'+f1(p[0])+' '+f1(p[1])+' '}return pth(d)+dot(cx,cy,2.6)}
+const band=()=>pth('M70 240 Q200 268 330 240 M70 258 Q200 286 330 258 M70 240 L70 258 M330 240 L330 258')+dia(200,265,8);
+const ey=x=>240+14*(1-Math.pow((x-200)/130,2));
+function beads(){let o='';for(let x=88;x<=312;x+=24)o+=dot(x,f1(ey(x)+9),2.6);return o}
+const leaf=(x,y,len,ang)=>'<path transform="translate('+x+' '+y+') rotate('+ang+')" d="M0 0 Q'+f1(len*.4)+' '+f1(-len*.3)+' '+len+' 0 Q'+f1(len*.4)+' '+f1(len*.3)+' 0 0Z"/>';
+function rays(cx,cy,r0,list){let d='';list.forEach(a=>{const p=pol(cx,cy,r0,a[0]),q=pol(cx,cy,a[1],a[0]);d+='M'+f1(p[0])+' '+f1(p[1])+' L'+f1(q[0])+' '+f1(q[1])+' '});return pth(d)}
+const ringDots=(cx,cy,r,angs,s)=>angs.map(a=>{const p=pol(cx,cy,r,a);return dot(f1(p[0]),f1(p[1]),s)}).join('');
+const CRN={
+sun:[band(),
+ '<circle cx="200" cy="196" r="24"/><circle cx="200" cy="196" r="17"/>'+dot(200,196,7)+pth('M184 214 L178 254 M216 214 L222 254'),
+ rays(200,196,32,[[-165,58],[-150,74],[-135,58],[-120,80],[-105,60],[-90,92],[-75,60],[-60,80],[-45,58],[-30,74],[-15,58]]),
+ pth('M92 247 L108 128 L130 251 M270 251 L292 128 L308 247 M138 251 L152 190 L170 238 M230 238 L248 190 L262 251')+dot(108,122,4)+dot(292,122,4)+dot(152,184,3)+dot(248,184,3)+beads(),
+ pth('M96 196 A104 104 0 0 1 304 196')+dia(128,112,7)+dia(272,112,7)+dia(200,72,8),
+ star8(200,40,22,11)+pth('M200 62 L200 92')+ringDots(200,196,104,[-160,-135,-110,-70,-45,-20],3)],
+moon:[band(),
+ pth('M200 128 C242 168 242 214 200 250 C158 214 158 168 200 128Z')+pth('M200 150 C226 176 226 206 200 232 C174 206 174 176 200 150Z')+dot(200,192,5),
+ pth('M100 128 A50 50 0 0 0 112 222 A70 70 0 0 1 100 128Z')+pth('M300 128 A50 50 0 0 1 288 222 A70 70 0 0 0 300 128Z'),
+ leaf(172,252,50,-112)+leaf(152,254,50,-142)+leaf(130,254,46,-168)+leaf(228,252,50,-68)+leaf(248,254,50,-38)+leaf(270,254,46,-12)+pth('M118 232 Q140 205 170 222 M282 232 Q260 205 230 222'),
+ beads()+dot(100,122,4)+dot(300,122,4)+dot(200,120,5)+dot(172,190,3.5)+dot(228,190,3.5),
+ pth('M184 34 A18 18 0 0 0 216 34 A22 22 0 0 1 184 34Z')+pth('M184 56 A18 18 0 0 0 216 56 A22 22 0 0 1 184 56Z')+dot(200,82,4)+pth('M88 190 A112 112 0 0 1 312 190')+ringDots(200,190,112,[-150,-120,-60,-30],3)],
+star:[band(),
+ pth('M200 118 L230 190 L200 262 L170 190Z')+pth('M200 150 L215 190 L200 230 L185 190Z')+dot(200,190,4),
+ star8(200,50,22,10)+pth('M200 72 L200 118'),
+ pth('M80 249 L104 130 L134 253 M266 253 L296 130 L320 249 M138 250 L158 165 L182 232 M218 232 L242 165 L262 250')+dia(104,124,7)+dia(296,124,7)+dia(158,159,6)+dia(242,159,6),
+ dia(130,205,7)+dia(270,205,7)+dia(176,150,5)+dia(224,150,5)+beads(),
+ pth('M92 190 A108 108 0 0 1 308 190')+dia(76,168,5)+dia(324,168,5)+dia(134,98,5)+dia(266,98,5)+ringDots(200,190,108,[-150,-120,-60,-30],3)]};
+function crownInner(k,n){const g=CRN[k],A='fill="none" stroke-linecap="round" stroke-linejoin="round"';let o='<g transform="translate(-22 -8) scale(1.25)">';
+ o+='<g '+A+' stroke="#8f7040" stroke-opacity=".85" stroke-width="2.4" stroke-dasharray="0.1 5.2">'+g.join('').split('@F').join('none')+'</g>';
+ g.forEach((s,i)=>{const p=n>=ST[i]?1:(i>0&&n>ST[i-1]?(n-ST[i-1])/(ST[i]-ST[i-1]):0);
+  if(p>0)o+='<g '+A+' stroke="#b07a28" stroke-width="2.2" filter="url(#glow)" opacity="'+p.toFixed(2)+'">'+s.split('@F').join('#fff0c4')+'</g>'});
+ return o+'</g>'}
+const crownSVG=(k,n)=>'<svg viewBox="0 0 457 385">'+crownInner(k,n)+'</svg>';
+function crownHTML(k,n){return '<div class="frame"><svg viewBox="0 0 457 385">'+crownInner(k,n)+decoLayer(S.decos||[],S.seed||1)+'</svg></div>'}
 function renderPath(){let h='';for(let i=1;i<=40;i++){const ms=ST.includes(i);h+='<i class="'+(i<=S.steps?'on ':'')+(ms?'ms ':'')+(i===S.steps?'cur':'')+'">'+(ms?'✦':i)+'</i>'}$('path').innerHTML=h;
  const nx=ST.find(m=>m>S.steps);const d=nx?nx-S.steps:0;$('next').textContent=nx?('До следующей ступени: '+d+' '+(d===1?'шаг':(d%10>=2&&d%10<=4&&(d<12||d>14)?'шага':'шагов'))):'Все сорок шагов пройдены ✦';
- const k=S.kind,cur=sIdx(S.steps);$('tl').innerHTML=ST.map((t,i)=>i<=cur?'<div><div class="im"><img src="'+img(k,i)+'" alt=""></div><b>'+(i===0?'День 1':'День '+t)+'</b>'+CR[k].cap[i]+'</div>':'<div class="lk"><div class="im">✦</div><b>День '+t+'</b>ещё скрыто</div>').join('')}
-function showPick(){$('cards').innerHTML=['sun','moon','star'].map(k=>'<div class="cc" data-k="'+k+'"><img src="'+img(k,5)+'" alt=""><h2>'+CR[k].name+' венец</h2><span>'+CR[k].desc+'</span></div>').join('');
+ const k=S.kind,cur=sIdx(S.steps);$('tl').innerHTML=ST.map((t,i)=>i<=cur?'<div><div class="im">'+crownSVG(k,ST[i])+'</div><b>'+(i===0?'День 1':'День '+t)+'</b>'+CR[k].cap[i]+'</div>':'<div class="lk"><div class="im">✦</div><b>День '+t+'</b>ещё скрыто</div>').join('')}
+function showPick(){$('cards').innerHTML=['sun','moon','star'].map(k=>'<div class="cc" data-k="'+k+'"><div class="sv">'+crownSVG(k,-1)+'</div><h2>'+CR[k].name+' венец</h2><span>'+CR[k].desc+'</span></div>').join('');
  document.querySelectorAll('.cc').forEach(b=>b.onclick=async()=>{try{S=await call('choose',{kind:b.dataset.k});chime.pick();buzz();show();toast('Выбрано: '+CR[S.kind].name.toLowerCase()+' венец')}catch(e){toast('Не получилось, попробуй ещё раз')}})}
 function toast(m){const e=$('toast');e.textContent=m;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2400)}
 async function call(path,body){const r=await fetch(API+'/api/'+path,{method:'POST',headers:{'X-Init-Data':INIT,'Content-Type':'application/json'},body:JSON.stringify(body||{})});if(!r.ok)throw new Error(r.status);return r.json()}
@@ -123,14 +159,14 @@ async function makeImage(){const W=1080,H=1350,cv=document.createElement('canvas
  x.textAlign='center';x.fillStyle='#8a7352';x.font='600 26px Georgia,serif';x.fillText('К Л У Б   Л Е Г А Л И З А Ц И И   Т В О Е Й   С И Л Ы',W/2,110);
  x.fillStyle='#4a3420';x.font='600 62px Georgia,serif';x.fillText('Твой венец пробуждения',W/2,190);
  const bx=90,by=240,bw=900,bh=Math.round(900*385/457);x.save();x.beginPath();x.roundRect(bx,by,bw,bh,36);x.clip();
- x.drawImage(await loadImg(img(k,i)),bx,by,bw,bh);if(nx&&t>0){x.globalAlpha=t;x.drawImage(await loadImg(img(k,nx)),bx,by,bw,bh);x.globalAlpha=1}
- const sv=document.createElement('div');sv.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 457 385" width="'+bw+'" height="'+bh+'"><defs><radialGradient id="gem"><stop stop-color="#fff"/><stop offset=".5" stop-color="#fff0c8"/><stop offset="1" stop-color="#e8c780"/></radialGradient><filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2" result="s"/><feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+decoLayer(S.decos||[],S.seed||1).replace(/<g class="gl2[^>]*>.*?<\/g>/g,'').replace(/ class="[^"]*"/g,'')+'</svg>';
+ 
+ const sv=document.createElement('div');sv.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 457 385" width="'+bw+'" height="'+bh+'"><defs><radialGradient id="gem"><stop stop-color="#fff"/><stop offset=".5" stop-color="#fff0c8"/><stop offset="1" stop-color="#e8c780"/></radialGradient><filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2" result="s"/><feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="457" height="385" fill="#ecd7ad"/>'+crownInner(k,S.steps)+decoLayer(S.decos||[],S.seed||1).replace(/<g class="gl2[^>]*>.*?<\/g>/g,'').replace(/ class="[^"]*"/g,'')+'</svg>';
  x.drawImage(await loadImg('data:image/svg+xml;charset=utf-8,'+encodeURIComponent(sv.innerHTML)),bx,by,bw,bh);x.restore();
  x.strokeStyle='#d9b46c';x.lineWidth=2;x.beginPath();x.roundRect(bx,by,bw,bh,36);x.stroke();
  x.fillStyle='#b98a45';x.font='600 76px Georgia,serif';x.fillText(S.steps+' из 40',W/2,by+bh+110);
  x.fillStyle='#6a5334';x.font='italic 40px Georgia,serif';x.fillText(CR[k].cap[sIdx(S.steps)],W/2,by+bh+170);return cv.toDataURL('image/jpeg',.92)}
 async function saveImg(){const b=$('sv');b.disabled=true;b.textContent='Собираю картинку…';try{const r=await call('save',{img:await makeImage()});if(r.ok){chime.pick();buzz();toast('Венец отправлен тебе в чат с ботом ✦')}else toast('Нажми «Старт» в чате с @KsuEidos_bot и повтори')}catch(e){toast('Не получилось, попробуй ещё раз')}b.disabled=false;b.textContent='💾 Сохранить венец картинкой'}
-$('sv').onclick=saveImg;$('th').onclick=()=>{NIGHT=!NIGHT;localStorage.setItem('theme3',NIGHT?'night':'dawn');theme()};$('msb').onclick=()=>$('ms').classList.remove('on');$('snd').onclick=()=>{SND=!SND;localStorage.setItem('snd',SND?'1':'0');snd();if(SND)chime.pick()};
+$('sv').onclick=saveImg;$('msb').onclick=()=>$('ms').classList.remove('on');$('snd').onclick=()=>{SND=!SND;localStorage.setItem('snd',SND?'1':'0');snd();if(SND)chime.pick()};
 const need=w=>S.tdeco?mark(w,S.tdeco):openDeco(w);$('bm').onclick=()=>need('morning');$('be').onclick=()=>need('evening');$('dcx').onclick=()=>$('dc').classList.remove('on');
 document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{$('dc').classList.remove('on');chime.pick();mark($('dcw').value,b.dataset.d)});$('chg').onclick=()=>{S.kind=null;show()};
 Object.keys(DECO).forEach(k=>{const e=$('di_'+k);if(e)e.innerHTML=decoShape(k,DECO[k][1])});theme();(async()=>{try{S=await call('state')}catch(e){S=null}show()})();
