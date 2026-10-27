@@ -1,5 +1,5 @@
 <!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Твоя корона</title><script src="https://telegram.org/js/telegram-web-app.js"></script>
+<title>Твой венец</title><script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{--bg:linear-gradient(180deg,#f8eddb,#f1dfc0 55%,#e8cfa4);--tx:#4a3420;--mut:#8a7352;--gold:#b98a45;--card:#fffaf0cc;--edge:#cfa968;--btn:linear-gradient(180deg,#f3d896,#d9ad5f);--btnt:#3a2610;--rail:#e4d1ac}
@@ -13,8 +13,8 @@ button{font:inherit;font-size:19px;font-weight:600;border:0;border-radius:999px;
 button:disabled{background:var(--rail);color:var(--mut);box-shadow:none}
 .ghost{background:transparent;border:1px solid var(--edge);color:var(--gold);box-shadow:none}.snd{background:transparent;border:1px solid var(--edge);color:var(--mut);font-size:16px;padding:9px 14px;width:auto;box-shadow:none}
 .cc{border:1px solid var(--edge);border-radius:22px;padding:10px 10px 14px;margin:14px 0;background:var(--card);cursor:pointer;box-shadow:0 8px 26px #7a5a2a1f}
-.cc img{width:100%;border-radius:16px;display:block;aspect-ratio:457/385;object-fit:cover}.cc h2{font-weight:600;font-size:25px;margin:10px 0 0}.cc span{color:var(--mut);font-size:17px}
-#amulet{margin:10px 0 4px}.frame{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--edge);box-shadow:0 14px 44px #6b4a2455;aspect-ratio:457/385;background:#2a1d12}
+.cc img{width:68%;margin:0 auto;border-radius:16px;display:block;aspect-ratio:457/385;object-fit:cover}.cc h2{font-weight:600;font-size:25px;margin:10px 0 0}.cc span{color:var(--mut);font-size:17px}
+#amulet{margin:10px auto 4px;max-width:340px}.frame{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--edge);box-shadow:0 14px 44px #6b4a2455;aspect-ratio:457/385;background:#2a1d12}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.frame svg{position:absolute;inset:0;width:100%;height:100%}
 .glow .frame{animation:gl 1.3s ease-out}@keyframes gl{0%{filter:brightness(1.7) drop-shadow(0 0 26px #ffe9a8)}100%{filter:none}}
 .count{font-size:34px;color:var(--gold);margin:8px 0 0;font-weight:600}.cap{font-style:italic;color:var(--mut);margin:0 0 2px}
@@ -25,7 +25,7 @@ button:disabled{background:var(--rail);color:var(--mut);box-shadow:none}
 .path i.ms{border-width:1.8px;font-size:13px}.path i.cur{animation:pl 1.8s ease-in-out infinite}@keyframes pl{50%{box-shadow:0 0 15px 3px #efc881bb}}
 .next{color:var(--gold);font-size:19px;margin:2px 0 6px;font-weight:600}
 .pr{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:6px 16px 2px;background:#2a1d12;border-radius:16px;padding:8px}.pr:empty{display:none}.pr b{display:inline-flex}
-.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 8px;margin:12px 2px 4px}.tl>div{font-size:14px;line-height:1.15;color:var(--tx)}.tl .im{border-radius:14px;overflow:hidden;border:1px solid var(--edge);background:#2a1d12;aspect-ratio:457/385;margin-bottom:4px}.tl b{display:block;font-size:15px;color:var(--gold)}
+.tl{max-width:420px;margin-left:auto;margin-right:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 8px;margin:12px 2px 4px}.tl>div{font-size:14px;line-height:1.15;color:var(--tx)}.tl .im{border-radius:14px;overflow:hidden;border:1px solid var(--edge);background:#2a1d12;aspect-ratio:457/385;margin-bottom:4px}.tl b{display:block;font-size:15px;color:var(--gold)}
 .tl img{width:100%;height:100%;object-fit:cover;display:block}
 .tl .lk .im{display:flex;align-items:center;justify-content:center;color:#9c8766;font-size:22px;background:#e4d1ac55}.tl .lk{color:var(--mut)}
 .tw{animation:tw 3.6s ease-in-out infinite}@keyframes tw{50%{opacity:.55}}
@@ -40,30 +40,30 @@ button:disabled{background:var(--rail);color:var(--mut);box-shadow:none}
 .hide{display:none}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute"><defs><radialGradient id="gem"><stop stop-color="#fff"/><stop offset=".5" stop-color="#fff0c8"/><stop offset="1" stop-color="#e8c780"/></radialGradient><filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2" result="s"/><feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs></svg>
-<div id="err" class="hide"><h1>Открой корону через Telegram</h1><p>Эта страница работает только внутри Telegram, по кнопке в клубе.</p></div>
-<div id="pick" class="hide"><div class="small">✧ Клуб легализации твоей силы</div><h1>Выбери свою корону</h1><div class="rule">✦</div>
-<p class="intro">Это твоя личная корона пробуждения. Каждый день с практикой ты отмечаешь утро или вечер и выбираешь украшение: жемчужину, звёздочку, цветок, алмаз. Оно ложится на корону и остаётся навсегда. За сорок шагов корона раскрывается полностью, и у каждой она получается своей. Какой она станет, ты увидишь сама.</p>
+<div id="err" class="hide"><h1>Открой венец через Telegram</h1><p>Эта страница работает только внутри Telegram, по кнопке в клубе.</p></div>
+<div id="pick" class="hide"><div class="small">✧ Клуб легализации твоей силы</div><h1>Выбери свой венец</h1><div class="rule">✦</div>
+<p class="intro">Это твоя личный венец пробуждения. Каждый день с практикой ты отмечаешь утро или вечер и выбираешь украшение: жемчужину, звёздочку, цветок, алмаз. Оно ложится на венец и остаётся навсегда. За сорок шагов венец раскрывается полностью, и у каждой она получается своей. Какой она станет, ты увидишь сама.</p>
 <div id="cards"></div></div>
-<div id="main" class="hide"><div class="small">Твоя корона · <span id="nm"></span></div>
+<div id="main" class="hide"><div class="small">Твой венец · <span id="nm"></span></div>
 <div id="amulet"></div>
 <div class="count"><span id="n">0</span> из 40</div><p class="cap" id="stage"></p><div class="rail"><i id="fill"></i></div><p class="next" id="next"></p>
 <button id="bm">☀ Отметить утро</button><button id="be">☾ Отметить вечер</button>
 <div class="pr" id="pr"></div>
-<p class="love">Шаг за шагом ты идёшь к себе, а корона хранит каждый твой день.<br>Выбирай украшение сердцем: она станет единственной на свете.<span id="pe" class="hide"></span></p>
+<p class="love">Шаг за шагом ты идёшь к себе, а венец хранит каждый твой день.<br>Выбирай украшение сердцем: он станет единственным на свете.<span id="pe" class="hide"></span></p>
 <div class="small" style="margin-top:14px">Карта пути</div><div class="path" id="path"></div>
 <div class="small">Раскрытые ступени</div><div class="tl" id="tl"></div>
-<div style="margin-top:14px"><button class="ghost" id="sv">💾 Сохранить корону картинкой</button><button class="snd" id="th">🌙 Фон: ночь</button><button class="snd" id="snd">🔔 Звук: вкл</button><button class="ghost" id="chg">Выбрать другую корону</button></div></div>
+<div style="margin-top:14px"><button class="ghost" id="sv">💾 Сохранить венец картинкой</button><button class="snd" id="th">🌙 Фон: ночь</button><button class="snd" id="snd">🔔 Звук: вкл</button><button class="ghost" id="chg">Выбрать другой венец</button></div></div>
 <div id="ms"><div><h2 id="mst"></h2><p id="msp"></p><button id="msb">Спасибо ✨</button></div></div>
-<div id="dc"><div><h2>Чем украсим корону сегодня?</h2><p>Выбери одно украшение. Оно ляжет на корону и останется навсегда.</p><div class="dg"><button data-d="pearl"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_pearl"></svg><span>Жемчужина</span></button><button data-d="star"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_star"></svg><span>Звёздочка</span></button><button data-d="flower"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_flower"></svg><span>Цветок</span></button><button data-d="drop"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_drop"></svg><span>Капля росы</span></button><button data-d="feather"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_feather"></svg><span>Пёрышко</span></button><button data-d="moon"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_moon"></svg><span>Месяц</span></button><button data-d="crystal"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_crystal"></svg><span>Кристалл</span></button><button data-d="diamond"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_diamond"></svg><span>Алмаз</span></button><button data-d="leaf"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_leaf"></svg><span>Листик</span></button></div><input type="hidden" id="dcw"><button class="ghost" id="dcx">Не сейчас</button></div></div>
+<div id="dc"><div><h2>Чем украсим венец сегодня?</h2><p>Выбери одно украшение. Оно ляжет на венец и останется навсегда.</p><div class="dg"><button data-d="pearl"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_pearl"></svg><span>Жемчужина</span></button><button data-d="star"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_star"></svg><span>Звёздочка</span></button><button data-d="flower"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_flower"></svg><span>Цветок</span></button><button data-d="drop"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_drop"></svg><span>Капля росы</span></button><button data-d="feather"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_feather"></svg><span>Пёрышко</span></button><button data-d="moon"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_moon"></svg><span>Месяц</span></button><button data-d="crystal"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_crystal"></svg><span>Кристалл</span></button><button data-d="diamond"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_diamond"></svg><span>Алмаз</span></button><button data-d="leaf"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_leaf"></svg><span>Листик</span></button></div><input type="hidden" id="dcw"><button class="ghost" id="dcx">Не сейчас</button></div></div>
 <div id="toast"></div>
 <script>
 const tg=window.Telegram&&Telegram.WebApp;if(tg){tg.ready();tg.expand()}
 const API='';const INIT=tg?tg.initData:'';const $=id=>document.getElementById(id);
 const ST=[0,7,14,21,30,40];
 const CR={
-sun:{name:'Солнечная',desc:'Свет и лучи',cap:['Первая искра','Появляется свет','Раскрываются лучи','Добавляются жемчужины','Усиление сияния','Корона полностью раскрыта']},
-moon:{name:'Лунная',desc:'Тишина и жемчуг',cap:['Первая искра','Появляется луна','Раскрываются узоры','Добавляются жемчужины','Усиление сияния','Корона полностью раскрыта']},
-star:{name:'Звёздная',desc:'Грани и кристаллы',cap:['Первая искра','Появляется звезда','Раскрываются грани','Добавляются кристаллы','Усиление сияния','Корона полностью раскрыта']}};
+sun:{name:'Солнечный',desc:'Свет и лучи',cap:['Первая искра','Появляется свет','Раскрываются лучи','Добавляются жемчужины','Усиление сияния','Венец полностью раскрыт']},
+moon:{name:'Лунный',desc:'Тишина и жемчуг',cap:['Первая искра','Появляется луна','Раскрываются узоры','Добавляются жемчужины','Усиление сияния','Венец полностью раскрыт']},
+star:{name:'Звёздный',desc:'Грани и кристаллы',cap:['Первая искра','Появляется звезда','Раскрываются грани','Добавляются кристаллы','Усиление сияния','Венец полностью раскрыт']}};
 const sIdx=n=>{let i=0;ST.forEach((t,k)=>{if(n>=t)i=k});return i};
 const img=(k,i)=>'/s/c/'+k+(i+1)+'.jpg';
 let SND=localStorage.getItem('snd')!=='0',AC=null;
@@ -71,7 +71,7 @@ function tone(f,t0,dur,vol){if(!SND)return;try{AC=AC||new (window.AudioContext||
 const chime={step:()=>{tone(659,0,1.4,.12);tone(988,.12,1.6,.09)},pearl:()=>{tone(1319,0,1.2,.08);tone(1760,.1,1.4,.06)},ms:()=>{[523,659,784,1047].forEach((f,i)=>tone(f,i*.18,2,.1))},pick:()=>tone(784,0,1.2,.1)};
 function buzz(){try{tg&&tg.HapticFeedback&&tg.HapticFeedback.notificationOccurred('success')}catch(e){}}
 
-const MSB={7:'Первая веха. ',14:'Ты идёшь дальше. ',21:'Середина пути. ',30:'Осталось десять шагов. ',40:'Путь пройден. Корона раскрыта полностью и останется с тобой. '};
+const MSB={7:'Первая веха. ',14:'Ты идёшь дальше. ',21:'Середина пути. ',30:'Осталось десять шагов. ',40:'Путь пройден. Венец раскрыт полностью и останется с тобой. '};
 const NUMW={7:'Семь шагов',14:'Четырнадцать шагов',21:'Двадцать один шаг',30:'Тридцать шагов',40:'Сорок шагов'};
 const DECO={pearl:['Жемчужина','#fff3d6'],star:['Звёздочка','#ffe08a'],flower:['Цветок','#f7b9a8'],drop:['Капля росы','#bfe6f2'],feather:['Пёрышко','#cfe9cf'],moon:['Месяц','#fff0c4'],crystal:['Кристалл','#d6f1ee'],leaf:['Листик','#bddf9a'],diamond:['Алмаз','#e4f4ff']};
 function decoShape(k,c){const l=`fill="none" stroke="${c}" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round"`;
@@ -102,8 +102,8 @@ function crownHTML(k,n){const i=sIdx(n),nx=i<5?i+1:null,t=nx?(n-ST[i])/(ST[nx]-S
 function renderPath(){let h='';for(let i=1;i<=40;i++){const ms=ST.includes(i);h+='<i class="'+(i<=S.steps?'on ':'')+(ms?'ms ':'')+(i===S.steps?'cur':'')+'">'+(ms?'✦':i)+'</i>'}$('path').innerHTML=h;
  const nx=ST.find(m=>m>S.steps);const d=nx?nx-S.steps:0;$('next').textContent=nx?('До следующей ступени: '+d+' '+(d===1?'шаг':(d%10>=2&&d%10<=4&&(d<12||d>14)?'шага':'шагов'))):'Все сорок шагов пройдены ✦';
  const k=S.kind,cur=sIdx(S.steps);$('tl').innerHTML=ST.map((t,i)=>i<=cur?'<div><div class="im"><img src="'+img(k,i)+'" alt=""></div><b>'+(i===0?'День 1':'День '+t)+'</b>'+CR[k].cap[i]+'</div>':'<div class="lk"><div class="im">✦</div><b>День '+t+'</b>ещё скрыто</div>').join('')}
-function showPick(){$('cards').innerHTML=['sun','moon','star'].map(k=>'<div class="cc" data-k="'+k+'"><img src="'+img(k,0)+'" alt=""><h2>'+CR[k].name+' корона</h2><span>'+CR[k].desc+'</span></div>').join('');
- document.querySelectorAll('.cc').forEach(b=>b.onclick=async()=>{try{S=await call('choose',{kind:b.dataset.k});chime.pick();buzz();show();toast('Выбрано: '+CR[S.kind].name.toLowerCase()+' корона')}catch(e){toast('Не получилось, попробуй ещё раз')}})}
+function showPick(){$('cards').innerHTML=['sun','moon','star'].map(k=>'<div class="cc" data-k="'+k+'"><img src="'+img(k,5)+'" alt=""><h2>'+CR[k].name+' венец</h2><span>'+CR[k].desc+'</span></div>').join('');
+ document.querySelectorAll('.cc').forEach(b=>b.onclick=async()=>{try{S=await call('choose',{kind:b.dataset.k});chime.pick();buzz();show();toast('Выбрано: '+CR[S.kind].name.toLowerCase()+' венец')}catch(e){toast('Не получилось, попробуй ещё раз')}})}
 function toast(m){const e=$('toast');e.textContent=m;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2400)}
 async function call(path,body){const r=await fetch(API+'/api/'+path,{method:'POST',headers:{'X-Init-Data':INIT,'Content-Type':'application/json'},body:JSON.stringify(body||{})});if(!r.ok)throw new Error(r.status);return r.json()}
 function show(){['err','pick','main'].forEach(x=>$(x).classList.add('hide'));
@@ -115,13 +115,13 @@ function show(){['err','pick','main'].forEach(x=>$(x).classList.add('hide'));
  $('bm').disabled=S.morning;$('be').disabled=S.evening;$('bm').textContent=S.morning?'✓ Утро отмечено':'☀ Отметить утро';$('be').textContent=S.evening?'✓ Вечер отмечен':'☾ Отметить вечер'}
 async function mark(w,deco){const before=S.steps;try{S=await call('mark',{when:w,deco:deco});show();const up=S.steps>before;buzz();$('amulet').classList.remove('glow');void $('amulet').offsetWidth;$('amulet').classList.add('glow');
  if(up&&NUMW[S.steps]){chime.ms();$('mst').textContent=NUMW[S.steps];$('msp').textContent=MSB[S.steps]+CR[S.kind].cap[sIdx(S.steps)]+'.';$('ms').classList.add('on')}
- else if(up){chime.step();toast('Корона стала светлее, украшение легло на место ✦')}else{chime.pearl();toast('Ещё одно украшение легло на корону ✧')}}catch(e){toast('Не получилось, попробуй ещё раз')}}
+ else if(up){chime.step();toast('Венец стал светлее, украшение легло на место ✦')}else{chime.pearl();toast('Ещё одно украшение легло на венец ✧')}}catch(e){toast('Не получилось, попробуй ещё раз')}}
 function loadImg(src){return new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src})}
 async function makeImage(){const W=1080,H=1350,cv=document.createElement('canvas');cv.width=W;cv.height=H;const x=cv.getContext('2d');const k=S.kind,i=sIdx(S.steps),nx=i<5?i+1:null,t=nx?(S.steps-ST[i])/(ST[nx]-ST[i]):0;
  const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#f8eddb');g.addColorStop(1,'#e8cfa4');x.fillStyle=g;x.fillRect(0,0,W,H);
  x.strokeStyle='#b98a45';x.lineWidth=3;x.strokeRect(30,30,W-60,H-60);x.lineWidth=1;x.strokeRect(44,44,W-88,H-88);
  x.textAlign='center';x.fillStyle='#8a7352';x.font='600 26px Georgia,serif';x.fillText('К Л У Б   Л Е Г А Л И З А Ц И И   Т В О Е Й   С И Л Ы',W/2,110);
- x.fillStyle='#4a3420';x.font='600 62px Georgia,serif';x.fillText('Твоя корона пробуждения',W/2,190);
+ x.fillStyle='#4a3420';x.font='600 62px Georgia,serif';x.fillText('Твой венец пробуждения',W/2,190);
  const bx=90,by=240,bw=900,bh=Math.round(900*385/457);x.save();x.beginPath();x.roundRect(bx,by,bw,bh,36);x.clip();
  x.drawImage(await loadImg(img(k,i)),bx,by,bw,bh);if(nx&&t>0){x.globalAlpha=t;x.drawImage(await loadImg(img(k,nx)),bx,by,bw,bh);x.globalAlpha=1}
  const sv=document.createElement('div');sv.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 457 385" width="'+bw+'" height="'+bh+'"><defs><radialGradient id="gem"><stop stop-color="#fff"/><stop offset=".5" stop-color="#fff0c8"/><stop offset="1" stop-color="#e8c780"/></radialGradient><filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2" result="s"/><feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+decoLayer(S.decos||[],S.seed||1).replace(/<g class="gl2[^>]*>.*?<\/g>/g,'').replace(/ class="[^"]*"/g,'')+'</svg>';
@@ -129,7 +129,7 @@ async function makeImage(){const W=1080,H=1350,cv=document.createElement('canvas
  x.strokeStyle='#d9b46c';x.lineWidth=2;x.beginPath();x.roundRect(bx,by,bw,bh,36);x.stroke();
  x.fillStyle='#b98a45';x.font='600 76px Georgia,serif';x.fillText(S.steps+' из 40',W/2,by+bh+110);
  x.fillStyle='#6a5334';x.font='italic 40px Georgia,serif';x.fillText(CR[k].cap[sIdx(S.steps)],W/2,by+bh+170);return cv.toDataURL('image/jpeg',.92)}
-async function saveImg(){const b=$('sv');b.disabled=true;b.textContent='Собираю картинку…';try{const r=await call('save',{img:await makeImage()});if(r.ok){chime.pick();buzz();toast('Корона отправлена тебе в чат с ботом ✦')}else toast('Нажми «Старт» в чате с @KsuEidos_bot и повтори')}catch(e){toast('Не получилось, попробуй ещё раз')}b.disabled=false;b.textContent='💾 Сохранить корону картинкой'}
+async function saveImg(){const b=$('sv');b.disabled=true;b.textContent='Собираю картинку…';try{const r=await call('save',{img:await makeImage()});if(r.ok){chime.pick();buzz();toast('Венец отправлен тебе в чат с ботом ✦')}else toast('Нажми «Старт» в чате с @KsuEidos_bot и повтори')}catch(e){toast('Не получилось, попробуй ещё раз')}b.disabled=false;b.textContent='💾 Сохранить венец картинкой'}
 $('sv').onclick=saveImg;$('th').onclick=()=>{NIGHT=!NIGHT;localStorage.setItem('theme3',NIGHT?'night':'dawn');theme()};$('msb').onclick=()=>$('ms').classList.remove('on');$('snd').onclick=()=>{SND=!SND;localStorage.setItem('snd',SND?'1':'0');snd();if(SND)chime.pick()};
 const need=w=>S.tdeco?mark(w,S.tdeco):openDeco(w);$('bm').onclick=()=>need('morning');$('be').onclick=()=>need('evening');$('dcx').onclick=()=>$('dc').classList.remove('on');
 document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{$('dc').classList.remove('on');chime.pick();mark($('dcw').value,b.dataset.d)});$('chg').onclick=()=>{S.kind=null;show()};
