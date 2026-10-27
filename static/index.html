@@ -13,7 +13,7 @@ button{font:inherit;font-size:19px;font-weight:600;border:0;border-radius:999px;
 button:disabled{background:var(--rail);color:var(--mut);box-shadow:none}
 .ghost{background:transparent;border:1px solid var(--edge);color:var(--gold);box-shadow:none}.snd{background:transparent;border:1px solid var(--edge);color:var(--mut);font-size:16px;padding:9px 14px;width:auto;box-shadow:none}
 .cc{padding:6px 10px 10px;margin:8px 0 14px;cursor:pointer;border-bottom:1px solid #cfa96844}
-.cc img{width:68%;margin:0 auto;border-radius:16px;display:block;aspect-ratio:457/385;object-fit:cover}.cc h2{font-weight:600;font-size:25px;margin:10px 0 0}.cc span{color:var(--mut);font-size:17px}
+.cc img{width:68%;margin:0 auto;border-radius:16px;display:block;aspect-ratio:457/385;object-fit:cover}.cc h2{font-weight:700;font-size:26px;margin:10px 0 0;background:linear-gradient(100deg,#7a5218,#b98a3f 50%,#8a5f22);-webkit-background-clip:text;background-clip:text;color:transparent}.cc span{color:var(--mut);font-size:17px}
 #amulet{margin:10px auto 4px;max-width:340px}.frame{position:relative;aspect-ratio:457/385}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.frame svg{position:absolute;inset:0;width:100%;height:100%}
 .glow .frame{animation:gl 1.3s ease-out}@keyframes gl{0%{filter:brightness(1.7) drop-shadow(0 0 26px #ffe9a8)}100%{filter:none}}
@@ -116,7 +116,7 @@ function jewels(k){const p=PTS[k];return dia(p[1][0],p[1][1]-9,5)+dia(p[3][0],p[
 const SIG={
  sun:{c:'<circle cx="200" cy="184" r="19"/><circle cx="200" cy="184" r="12.5"/>'+dot(200,184,5)+ringDots(200,184,28,[-150,-120,-90,-60,-30,0,30,150,180],1.7)},
  moon:{c:pth('M200 118 C232 152 232 200 200 232 C168 200 168 152 200 118Z')+pth('M200 142 C218 164 218 190 200 212 C182 190 182 164 200 142Z')+dot(200,177,4),
-       h:pth('M86 96 C40 116 34 188 90 214 C60 184 62 134 86 96Z')},
+       hp:pth('M86 96 C40 116 34 188 90 214 C60 184 62 134 86 96Z')},
  star:{c:pth('M200 98 L224 176 L200 240 L176 176Z')+pth('M200 134 L212 176 L200 214 L188 176Z')+dot(200,176,3.2)}};
 function build(k){const p=PTS[k];
  return [
@@ -127,7 +127,7 @@ function build(k){const p=PTS[k];
   {h:jewels(k)+dot(p[1][0],p[1][1]-20,1.8)+dot(p[3][0],p[3][1]-20,1.8),c:dia(200,p[5][1]-12,6.5)},
   {h:spark(70,92,7)+spark(104,52,5)+dot(60,128,1.8),c:spark(200,Math.max(16,p[5][1]-34),11)}]}
 const CRN={sun:build('sun'),moon:build('moon'),star:build('star')};
-function stagePath(g){let s='';if(g.h)s+='<g>'+g.h+'</g><g transform="translate(400 0) scale(-1 1)">'+g.h+'</g>';if(g.c)s+=g.c;return s}
+function stagePath(g){let s='';if(g.hp)s+='<g opacity=".22"><g>'+g.hp+'</g><g transform="translate(400 0) scale(-1 1)">'+g.hp+'</g></g>';if(g.h)s+='<g>'+g.h+'</g><g transform="translate(400 0) scale(-1 1)">'+g.h+'</g>';if(g.c)s+=g.c;return s}
 const PREM='<defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9c777"/><stop offset=".5" stop-color="#b98a3f"/><stop offset="1" stop-color="#f1d68f"/></linearGradient><radialGradient id="hl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff3cc" stop-opacity=".95"/><stop offset=".55" stop-color="#f6dfa4" stop-opacity=".38"/><stop offset="1" stop-color="#f6dfa4" stop-opacity="0"/></radialGradient><radialGradient id="ped" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#d9b05a" stop-opacity=".5"/><stop offset="1" stop-color="#d9b05a" stop-opacity="0"/></radialGradient></defs>';
 const DUST=[[40,60,1.6],[96,30,1.2],[150,84,1.4],[300,40,1.5],[350,96,1.3],[410,58,1.6],[64,200,1.2],[394,196,1.4],[120,330,1.2],[338,326,1.4],[228,18,1.1]];
 function halo(){return '<ellipse cx="228" cy="190" rx="215" ry="170" fill="url(#hl)"/>'}
