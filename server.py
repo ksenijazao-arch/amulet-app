@@ -5,7 +5,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 TOKEN = os.environ['BOT_TOKEN']
 DBURL = os.environ['DATABASE_URL']
 HOST = re.search(r'@([^/]+)/', DBURL).group(1)
-KINDS = {'venus', 'lotus', 'amrita'}
+KINDS = {'sun', 'moon', 'star', 'venus', 'lotus', 'amrita'}
 DECOS = {'pearl', 'star', 'flower', 'drop', 'feather', 'moon', 'crystal', 'leaf', 'diamond'}
 _S = None
 
@@ -73,7 +73,7 @@ async def api(req):
             st = await state(uid)
             fd = aiohttp.FormData()
             fd.add_field('chat_id', str(uid))
-            fd.add_field('caption', '🌙 Твой амулет пробуждения · %d из 40\nМожно сохранить на телефон и переслать.' % st['steps'])
+            fd.add_field('caption', '🌙 Твоя корона пробуждения · %d из 40\nМожно сохранить на телефон и переслать.' % st['steps'])
             fd.add_field('photo', raw, filename='amulet.jpg', content_type='image/jpeg')
             async with sess().post(f'https://api.telegram.org/bot{TOKEN}/sendPhoto', data=fd) as r:
                 j = await r.json()
