@@ -17,7 +17,7 @@ button:disabled{background:var(--rail);color:var(--mut);box-shadow:none}
 #amulet{margin:10px auto 4px;max-width:340px}.frame{position:relative;aspect-ratio:457/385}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.frame svg{position:absolute;inset:0;width:100%;height:100%}
 .tl .im{position:relative;overflow:hidden}.wc{position:absolute;inset:0;pointer-events:none}.wc img{position:absolute;left:0;right:0;bottom:6%;width:100%;max-height:92%;object-fit:contain;object-position:bottom}
-.wc img.g{filter:grayscale(.85) sepia(.35) brightness(1.08);opacity:.22}.wc img.f{filter:drop-shadow(0 0 7px #f3cf7a99)}.wc.full img.f{filter:drop-shadow(0 0 12px #f3cf7acc)}.wc.pk img.g{display:none}.wc.pk img.f{filter:drop-shadow(0 4px 10px #b98a4533)}
+.wc img.o{filter:drop-shadow(0 0 3px #f3cf7a88)}.wc img.g{filter:grayscale(.85) sepia(.35) brightness(1.08);opacity:.22}.wc img.f{filter:drop-shadow(0 0 7px #f3cf7a99)}.wc.full img.f{filter:drop-shadow(0 0 12px #f3cf7acc)}.wc.pk img.g{display:none}.wc.pk img.f{filter:drop-shadow(0 4px 10px #b98a4533)}
 .frame:before{content:"";position:absolute;inset:-6% -10%;background:radial-gradient(ellipse at 50% 55%,#fff3cfcc 0,#f6dfa466 45%,transparent 72%);pointer-events:none}
 .frame .wc,.frame svg{z-index:1}.glow .frame{animation:gl 1.3s ease-out}@keyframes gl{0%{filter:brightness(1.7) drop-shadow(0 0 26px #ffe9a8)}100%{filter:none}}
 .count{font-size:38px;background:linear-gradient(100deg,#9a6c28,#e3bd6c 50%,#a77a33);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 0;font-weight:600}.cap{font-style:italic;color:var(--mut);margin:0 0 2px}
@@ -108,7 +108,7 @@ function crownHTML(k,n){return '<div class="frame">'+wcrown(k,n)+'<svg viewBox="
 function renderPath(){let h='';for(let i=1;i<=40;i++){const ms=ST.includes(i);h+='<i class="'+(i<=S.steps?'on ':'')+(ms?'ms ':'')+(i===S.steps?'cur':'')+'">'+(ms?'✦':i)+'</i>'}$('path').innerHTML=h;
  const nx=ST.find(m=>m>S.steps);const d=nx?nx-S.steps:0;$('next').textContent=nx?('До следующей ступени: '+d+' '+(d===1?'шаг':(d%10>=2&&d%10<=4&&(d<12||d>14)?'шага':'шагов'))):'Все сорок шагов пройдены ✦';
  const k=S.kind,cur=sIdx(S.steps);$('tl').innerHTML=ST.map((t,i)=>i<=cur?'<div><div class="im">'+wcrown(k,ST[i])+'</div><b>'+(i===0?'День 1':'День '+t)+'</b>'+CR[k].cap[i]+'</div>':'<div class="lk"><div class="im">✦</div><b>День '+t+'</b>ещё скрыто</div>').join('')}
-function showPick(){$('cards').innerHTML=['sun','moon','star'].map(k=>'<div class="cc" data-k="'+k+'"><div class="sv">'+wcrown(k,40,'pk')+'</div><h2>'+CR[k].name+' венец</h2><span>'+CR[k].desc+'</span></div>').join('');
+function showPick(){$('cards').innerHTML=['sun','moon','star'].map(k=>'<div class="cc" data-k="'+k+'"><div class="sv"><div class="wc"><img class="o" src="/s/w/'+k+'_o.webp" alt=""></div></div><h2>'+CR[k].name+' венец</h2><span>'+CR[k].desc+'</span></div>').join('');
  document.querySelectorAll('.cc').forEach(b=>b.onclick=async()=>{try{S=await call('choose',{kind:b.dataset.k});chime.pick();buzz();show();toast('Выбрано: '+CR[S.kind].name.toLowerCase()+' венец')}catch(e){toast('Не получилось, попробуй ещё раз')}})}
 function toast(m){const e=$('toast');e.textContent=m;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2400)}
 async function call(path,body){const r=await fetch(API+'/api/'+path,{method:'POST',headers:{'X-Init-Data':INIT,'Content-Type':'application/json'},body:JSON.stringify(body||{})});if(!r.ok)throw new Error(r.status);return r.json()}
