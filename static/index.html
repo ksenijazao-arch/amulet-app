@@ -1,102 +1,78 @@
 <!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Твой амулет</title><script src="https://telegram.org/js/telegram-web-app.js"></script>
+<title>Твоя корона</title><script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;background:#1a130d;background:linear-gradient(160deg,#1a130d,#2e2114 55%,#0f0b07);color:#fff0d6;font-family:Georgia,serif;min-height:100vh;padding:18px 16px 40px;text-align:center}
-h1{font-weight:400;font-size:26px;margin:6px 0 4px}p{color:#d8c9b8;line-height:1.5;font-size:17px;margin:8px 0}
-.small{font-size:14px;color:#b9a99a}.card{border:1px solid #b7955f55;border-radius:18px;padding:12px;margin:14px 0;background:#ffffff08}
-.card .out{width:100%;max-width:240px;height:auto;margin:6px 0}.card h2{font-weight:400;font-size:21px;margin:8px 0 2px}
-button{font:inherit;font-size:18px;border:0;border-radius:14px;padding:14px 18px;margin:6px 4px;background:#e6bf82;color:#2a1c10;width:calc(100% - 8px)}
-button:disabled{background:#4d4030;color:#a89a85}.ghost{background:transparent;border:1px solid #b7955f;color:#f1d6a5}
-#amulet svg{width:100%;max-width:340px;height:auto}.count{font-size:30px;color:#f1d6a5;margin:4px 0}
-.rail{height:8px;background:#4a3a28;border-radius:6px;margin:10px 10px 4px;overflow:hidden}.rail i{display:block;height:100%;background:#e6bf82}
-#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#e6bf82;color:#2a1c10;padding:10px 18px;border-radius:14px;opacity:0;transition:.3s;pointer-events:none}#toast.show{opacity:1}
-.path{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin:14px 6px}
-.path i{aspect-ratio:1;border-radius:50%;border:1px solid #b7955f55;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:10px;color:#b9a99a}
-.path i.on{background:radial-gradient(circle,#fffaf0,#f3d9a0 62%,#e6bf8277);border-color:#f0d29b99;color:#3a2a14;box-shadow:0 0 6px #efc88166}
-.path i.ms{border-color:#e6bf82aa;border-width:1.5px;font-size:12px}
-.path i.cur{animation:pl 1.8s ease-in-out infinite}
-@keyframes pl{50%{box-shadow:0 0 14px 3px #efc881aa}}
-.glow{animation:gl 1.2s ease-out}@keyframes gl{0%{filter:brightness(1.9) drop-shadow(0 0 22px #ffe9a8)}100%{filter:none}}
-.snd{background:transparent;border:1px solid #b7955f66;color:#cdbb9f;font-size:15px;padding:8px 12px;width:auto}
-.next{color:#f1d6a5;font-size:17px;margin:4px 0}
-#ms{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:24px;z-index:5}#ms.on{display:flex}
-#ms div{background:#2a1d12;border:1px solid #e6bf82;border-radius:20px;padding:24px 20px;max-width:340px}#ms h2{font-weight:400;font-size:26px;margin:0 0 8px;color:#f1d6a5}
-.pr{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin:4px 20px 0}.pr i{width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#f6e2b0 60%,#d9b46c);box-shadow:0 0 6px #fff1c488}.pr{gap:4px!important}.pr b{display:inline-flex;opacity:.95}
+:root{--bg:linear-gradient(180deg,#f8eddb,#f1dfc0 55%,#e8cfa4);--tx:#4a3420;--mut:#8a7352;--gold:#b98a45;--card:#fffaf0cc;--edge:#cfa968;--btn:linear-gradient(180deg,#f3d896,#d9ad5f);--btnt:#3a2610;--rail:#e4d1ac}
+body.night{--bg:linear-gradient(180deg,#1d140c,#2b1d12 55%,#140e08);--tx:#f6e7cc;--mut:#bfa985;--gold:#e6bf82;--card:#ffffff0d;--edge:#b7955f88;--btn:linear-gradient(180deg,#f0d38e,#d6a85a);--btnt:#2a1c10;--rail:#4a3a28}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font-family:'Cormorant Garamond',Georgia,serif;min-height:100vh;padding:20px 16px 44px;text-align:center;font-size:19px}
+h1{font-weight:400;font-size:34px;line-height:1.1;margin:8px 0 6px;letter-spacing:.02em}p{line-height:1.5;margin:8px 0}
+.small{font-size:13px;letter-spacing:.28em;color:var(--mut);text-transform:uppercase;font-weight:600}
+.intro{font-size:19px;line-height:1.5;margin:10px 4px 8px}
+.rule{display:flex;align-items:center;gap:10px;justify-content:center;margin:6px 24px 10px;color:var(--gold)}.rule:before,.rule:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--edge))}.rule:after{transform:scaleX(-1)}
+button{font:inherit;font-size:19px;font-weight:600;border:0;border-radius:999px;padding:13px 20px;margin:6px 4px;background:var(--btn);color:var(--btnt);width:calc(100% - 8px);box-shadow:0 4px 14px #b98a4533}
+button:disabled{background:var(--rail);color:var(--mut);box-shadow:none}
+.ghost{background:transparent;border:1px solid var(--edge);color:var(--gold);box-shadow:none}.snd{background:transparent;border:1px solid var(--edge);color:var(--mut);font-size:16px;padding:9px 14px;width:auto;box-shadow:none}
+.cc{border:1px solid var(--edge);border-radius:22px;padding:10px 10px 14px;margin:14px 0;background:var(--card);cursor:pointer;box-shadow:0 8px 26px #7a5a2a1f}
+.cc img{width:100%;border-radius:16px;display:block;aspect-ratio:457/385;object-fit:cover}.cc h2{font-weight:600;font-size:25px;margin:10px 0 0}.cc span{color:var(--mut);font-size:17px}
+#amulet{margin:10px 0 4px}.frame{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--edge);box-shadow:0 14px 44px #6b4a2455;aspect-ratio:457/385;background:#2a1d12}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.frame svg{position:absolute;inset:0;width:100%;height:100%}
+.glow .frame{animation:gl 1.3s ease-out}@keyframes gl{0%{filter:brightness(1.7) drop-shadow(0 0 26px #ffe9a8)}100%{filter:none}}
+.count{font-size:34px;color:var(--gold);margin:8px 0 0;font-weight:600}.cap{font-style:italic;color:var(--mut);margin:0 0 2px}
+.rail{height:6px;background:var(--rail);border-radius:6px;margin:10px 14px 6px;overflow:hidden}.rail i{display:block;height:100%;background:linear-gradient(90deg,#e6bf82,#fff0c0)}
+.path{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin:12px 4px}
+.path i{aspect-ratio:1;border-radius:50%;border:1px solid var(--edge);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:11px;color:var(--mut)}
+.path i.on{background:radial-gradient(circle,#fffaf0,#f3d9a0 62%,#e6bf8288);border-color:#d9b46c;color:#5a3a14;box-shadow:0 0 7px #efc88177}
+.path i.ms{border-width:1.8px;font-size:13px}.path i.cur{animation:pl 1.8s ease-in-out infinite}@keyframes pl{50%{box-shadow:0 0 15px 3px #efc881bb}}
+.next{color:var(--gold);font-size:19px;margin:2px 0 6px;font-weight:600}
+.pr{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:6px 16px 2px;background:#2a1d12;border-radius:16px;padding:8px}.pr:empty{display:none}.pr b{display:inline-flex}
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 8px;margin:12px 2px 4px}.tl>div{font-size:14px;line-height:1.15;color:var(--tx)}.tl .im{border-radius:14px;overflow:hidden;border:1px solid var(--edge);background:#2a1d12;aspect-ratio:457/385;margin-bottom:4px}.tl b{display:block;font-size:15px;color:var(--gold)}
+.tl img{width:100%;height:100%;object-fit:cover;display:block}
+.tl .lk .im{display:flex;align-items:center;justify-content:center;color:#9c8766;font-size:22px;background:#e4d1ac55}.tl .lk{color:var(--mut)}
 .tw{animation:tw 3.6s ease-in-out infinite}@keyframes tw{50%{opacity:.55}}
-#dc{position:fixed;inset:0;background:#000c;display:none;align-items:flex-end;justify-content:center;z-index:6}#dc.on{display:flex}
-#dc>div{background:#2a1d12;border:1px solid #e6bf8266;border-radius:22px 22px 0 0;padding:22px 16px 20px;width:100%;max-width:440px;text-align:center}
-#dc h2{font-weight:400;font-size:26px;margin:0 0 6px;color:#f1d6a5}#dc p{margin:0 0 14px;font-size:15px;color:#cdbb9f}
-.dg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
-.dg button{background:#ffffff08;border:1px solid #b7955f44;border-radius:14px;padding:10px 2px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;color:#e9dcc6;font-size:12px;width:auto}
-.dg button span{font-size:12px;line-height:1.1}
 .gl2{transform-box:fill-box;transform-origin:center;opacity:0;animation:gl2 3.4s ease-in-out infinite}.g3{animation-duration:2.6s}
 @keyframes gl2{0%,68%,100%{opacity:0;transform:scale(.3) rotate(0)}80%{opacity:.9;transform:scale(1) rotate(15deg)}92%{opacity:.25;transform:scale(.7) rotate(30deg)}}
-#dc .dg{grid-template-columns:repeat(3,1fr)}
-.intro{font-size:17px;line-height:1.55;margin:10px 4px 6px;color:#e4d6bf}
-.about{margin:2px 6px 0;text-align:center}.about summary{font-size:14px;color:#b9a99a;cursor:pointer;list-style:none;padding:4px}
-body.light{background:linear-gradient(160deg,#fbf3e4,#f3e6cf 55%,#eedfc4);color:#3a2a14}
-body.light p,body.light .intro{color:#5b4630}body.light .small,body.light .about summary{color:#8a7658}
-body.light h1,body.light .count,body.light .next,body.light #dc h2,body.light #ms h2{color:#7a5320}
-body.light .card{background:#ffffff90;border-color:#b08a4c88}
-body.light button:disabled{background:#e4d7bf;color:#9a8a70}
-body.light .ghost,body.light .snd{background:transparent;border-color:#b08a4c;color:#7a5320}
-body.light .rail{background:#e4d3b3}
-body.light .path i{border-color:#b08a4c88;color:#8a7658}
-body.light .path i.on{background:radial-gradient(circle,#f6dfa8,#d9a85c 75%);border-color:#b08a4c;color:#3a2a14;box-shadow:0 0 6px #d9a85c88}
-body.light #ms div,body.light #dc>div{background:#fff8ea;border-color:#c99a4f}body.light #dc p{color:#5b4630}
-body.light .dg button{background:#2a1d12;color:#f1d6a5;border-color:#c99a4f}
-body.light #amulet{background:radial-gradient(circle at 50% 45%,#2e2114,#1a130d 78%);border-radius:24px;padding:10px 6px;margin:8px 0;border:1px solid #c99a4f}
-body.light .pr{background:#2a1d12;border-radius:14px;padding:8px;margin:8px 6px 0}
-.love{font-size:18px;line-height:1.6;margin:14px 8px 10px;font-style:italic;color:#e9dcc6}body.light .love{color:#6a4f2e}.hide{display:none}
-</style></head><body class="light">
-<div id="err" class="hide"><h1>Открой амулет через Telegram</h1><p>Эта страница работает только внутри Telegram, по кнопке в клубе.</p></div>
-<div id="pick" class="hide"><div class="small">✧ КЛУБ ЛЕГАЛИЗАЦИИ ТВОЕЙ СИЛЫ</div><h1>Выбери свой амулет</h1><p class="intro">Это твой личный амулет пробуждения. Каждый день с практикой ты отмечаешь утро или вечер и выбираешь украшение: жемчужину, звёздочку, цветок, алмаз. Оно ложится на амулет и остаётся на нём навсегда. Сорок шагов он наполняется светом, и у каждой получается свой, второго такого нет. А когда захочешь, сохрани его картинкой на телефон.</p>
-<div class="card"><svg viewBox="0 0 400 400" class="out"><path d="M184 6 L192 52 M216 6 L208 52" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/><polygon points="200.0,82.0 216.8,159.3 283.4,116.6 240.7,183.2 318.0,200.0 240.7,216.8 283.4,283.4 216.8,240.7 200.0,318.0 183.2,240.7 116.6,283.4 159.3,216.8 82.0,200.0 159.3,183.2 116.6,116.6 183.2,159.3" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 7"/><circle cx="200" cy="200" r="150" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".4" stroke-dasharray="1 9"/><circle cx="200" cy="200" r="14" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><h2>Звезда Венеры</h2><p class="small">Образ раскроется шаг за шагом. Какой он будет в конце, ты увидишь сама.</p><button data-k="venus">Выбрать</button></div>
-<div class="card"><svg viewBox="0 0 400 400" class="out"><ellipse cx="200" cy="200" rx="92" ry="188" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/><path d="M200 30V370" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".3" stroke-dasharray="2 8"/><circle cx="200" cy="360" r="19" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 6"/><circle cx="200" cy="313" r="19" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 6"/><circle cx="200" cy="266" r="19" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 6"/><circle cx="200" cy="219" r="19" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 6"/><circle cx="200" cy="172" r="19" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 6"/><circle cx="200" cy="125" r="19" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 6"/><circle cx="200" cy="78" r="19" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 6"/></svg><h2>Семь лотосов</h2><p class="small">Образ раскроется шаг за шагом. Какой он будет в конце, ты увидишь сама.</p><button data-k="lotus">Выбрать</button></div>
-<div class="card"><svg viewBox="0 0 400 400" class="out"><path d="M190 4 L194 40 M210 4 L206 40" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/><path d="M200 70C112 84 98 128 102 200Q104 312 200 330Q296 312 298 200C302 128 288 84 200 70Z" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 7"/><path d="M178 336L172 352H228L222 336 M182 354L156 376H244L218 354" fill="none" stroke="#e8c88a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/></svg><h2>Сосуд амриты</h2><p class="small">Образ раскроется шаг за шагом. Какой он будет в конце, ты увидишь сама.</p><button data-k="amrita">Выбрать</button></div></div>
-<div id="main" class="hide"><div class="small">ТВОЙ АМУЛЕТ · <span id="nm"></span></div><div id="amulet"></div>
-<details class="about"><summary>Что это за амулет</summary><p class="intro">Это твой личный амулет пробуждения. Каждый день с практикой ты отмечаешь утро или вечер и выбираешь украшение: жемчужину, звёздочку, цветок, алмаз. Оно ложится на амулет и остаётся на нём навсегда. Сорок шагов он наполняется светом, и у каждой получается свой, второго такого нет. А когда захочешь, сохрани его картинкой на телефон.</p></details><div class="count"><span id="n">0</span> из 40</div><div class="rail"><i id="fill"></i></div><p id="stage"></p><div class="pr" id="pr"></div><div class="path" id="path"></div><p class="next" id="next"></p>
+.love{font-size:21px;line-height:1.5;margin:16px 8px 10px;font-style:italic}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#2a1d12;color:#f6e7cc;border:1px solid #d9b46c;padding:10px 18px;border-radius:999px;opacity:0;transition:.3s;pointer-events:none;font-size:17px;max-width:92vw}#toast.show{opacity:1}
+#ms,#dc{position:fixed;inset:0;background:#000b;display:none;z-index:5}#ms{align-items:center;justify-content:center;padding:24px}#ms.on{display:flex}#dc{align-items:flex-end;justify-content:center;z-index:6}#dc.on{display:flex}
+#ms>div,#dc>div{background:#fff8ea;color:#4a3420;border:1px solid #d9b46c;border-radius:26px;padding:24px 20px;max-width:360px}#dc>div{border-radius:26px 26px 0 0;width:100%;max-width:460px;padding:22px 14px 20px}
+#ms h2,#dc h2{font-weight:600;font-size:28px;margin:0 0 6px;color:#9a6a2a}#dc p{margin:0 0 12px;font-size:17px;color:#6a5334}
+.dg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}.dg button{background:#2a1d12;border:1px solid #c99a4f;border-radius:16px;padding:10px 2px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;color:#f1d6a5;font-size:14px;width:auto;margin:0;font-weight:600;box-shadow:none}
+.hide{display:none}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs><radialGradient id="gem"><stop stop-color="#fff"/><stop offset=".5" stop-color="#fff0c8"/><stop offset="1" stop-color="#e8c780"/></radialGradient><filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2" result="s"/><feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs></svg>
+<div id="err" class="hide"><h1>Открой корону через Telegram</h1><p>Эта страница работает только внутри Telegram, по кнопке в клубе.</p></div>
+<div id="pick" class="hide"><div class="small">✧ Клуб легализации твоей силы</div><h1>Выбери свою корону</h1><div class="rule">✦</div>
+<p class="intro">Это твоя личная корона пробуждения. Каждый день с практикой ты отмечаешь утро или вечер и выбираешь украшение: жемчужину, звёздочку, цветок, алмаз. Оно ложится на корону и остаётся навсегда. За сорок шагов корона раскрывается полностью, и у каждой она получается своей. Какой она станет, ты увидишь сама.</p>
+<div id="cards"></div></div>
+<div id="main" class="hide"><div class="small">Твоя корона · <span id="nm"></span></div>
+<div id="amulet"></div>
+<div class="count"><span id="n">0</span> из 40</div><p class="cap" id="stage"></p><div class="rail"><i id="fill"></i></div><p class="next" id="next"></p>
 <button id="bm">☀ Отметить утро</button><button id="be">☾ Отметить вечер</button>
-<p class="love">Шаг за шагом ты идёшь к себе, а амулет хранит каждый твой день.<br>Выбирай украшение сердцем: он станет единственным на свете.<span id="pe" class="hide"></span></p>
-<button class="ghost" id="sv">💾 Сохранить амулет картинкой</button><button class="snd" id="th">☀ Тема: светлая</button><button class="snd" id="snd">🔔 Звук: вкл</button><button class="ghost" id="chg">Выбрать другой образ</button></div><div id="ms"><div><h2 id="mst"></h2><p id="msp"></p><button id="msb">Спасибо ✨</button></div></div><div id="dc"><div><h2>Чем украсим амулет сегодня?</h2><p>Выбери одно украшение. Оно ляжет на твой амулет и останется навсегда.</p><div class="dg"><button data-d="pearl"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_pearl"></svg><span>Жемчужина</span></button><button data-d="star"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_star"></svg><span>Звёздочка</span></button><button data-d="flower"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_flower"></svg><span>Цветок</span></button><button data-d="drop"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_drop"></svg><span>Капля росы</span></button><button data-d="feather"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_feather"></svg><span>Пёрышко</span></button><button data-d="moon"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_moon"></svg><span>Месяц</span></button><button data-d="crystal"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_crystal"></svg><span>Кристалл</span></button><button data-d="diamond"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_diamond"></svg><span>Алмаз</span></button><button data-d="leaf"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_leaf"></svg><span>Листик</span></button></div><input type="hidden" id="dcw"><button class="ghost" id="dcx">Не сейчас</button></div></div><div id="toast"></div>
+<div class="pr" id="pr"></div>
+<p class="love">Шаг за шагом ты идёшь к себе, а корона хранит каждый твой день.<br>Выбирай украшение сердцем: она станет единственной на свете.<span id="pe" class="hide"></span></p>
+<div class="small" style="margin-top:14px">Карта пути</div><div class="path" id="path"></div>
+<div class="small">Раскрытые ступени</div><div class="tl" id="tl"></div>
+<div style="margin-top:14px"><button class="ghost" id="sv">💾 Сохранить корону картинкой</button><button class="snd" id="th">🌙 Фон: ночь</button><button class="snd" id="snd">🔔 Звук: вкл</button><button class="ghost" id="chg">Выбрать другую корону</button></div></div>
+<div id="ms"><div><h2 id="mst"></h2><p id="msp"></p><button id="msb">Спасибо ✨</button></div></div>
+<div id="dc"><div><h2>Чем украсим корону сегодня?</h2><p>Выбери одно украшение. Оно ляжет на корону и останется навсегда.</p><div class="dg"><button data-d="pearl"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_pearl"></svg><span>Жемчужина</span></button><button data-d="star"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_star"></svg><span>Звёздочка</span></button><button data-d="flower"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_flower"></svg><span>Цветок</span></button><button data-d="drop"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_drop"></svg><span>Капля росы</span></button><button data-d="feather"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_feather"></svg><span>Пёрышко</span></button><button data-d="moon"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_moon"></svg><span>Месяц</span></button><button data-d="crystal"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_crystal"></svg><span>Кристалл</span></button><button data-d="diamond"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_diamond"></svg><span>Алмаз</span></button><button data-d="leaf"><svg viewBox="-11 -11 22 22" width="38" height="38" id="di_leaf"></svg><span>Листик</span></button></div><input type="hidden" id="dcw"><button class="ghost" id="dcx">Не сейчас</button></div></div>
+<div id="toast"></div>
 <script>
 const tg=window.Telegram&&Telegram.WebApp;if(tg){tg.ready();tg.expand()}
-const INIT=tg?tg.initData:'';const $=id=>document.getElementById(id);
-const names={venus:'Звезда Венеры',lotus:'Семь лотосов',amrita:'Сосуд амриты'};
-const gold='#efc881',white='#fff5da';
-const svgDef=`<defs><radialGradient id="hot"><stop stop-color="#fffdf0"/><stop offset=".5" stop-color="#ffeebb"/><stop offset="1" stop-color="#e9c276"/></radialGradient><linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c9a266"/><stop offset=".5" stop-color="#f7e6bd"/><stop offset="1" stop-color="#c9a266"/></linearGradient><radialGradient id="gem"><stop stop-color="#fff"/><stop offset=".5" stop-color="#fff0c8"/><stop offset="1" stop-color="#e8c780"/></radialGradient><linearGradient id="water" x1="0" y1="1" x2="0" y2="0"><stop stop-color="#d9a85c" stop-opacity=".7"/><stop offset="1" stop-color="#fff3c4" stop-opacity=".9"/></linearGradient><linearGradient id="ray" x1="0" y1="1" x2="0" y2="0"><stop stop-color="#e9c276" stop-opacity=".12"/><stop offset="1" stop-color="#fffbe8"/></linearGradient><radialGradient id="halo"><stop offset=".62" stop-color="#fff1c4" stop-opacity="0"/><stop offset="1" stop-color="#fff1c4" stop-opacity=".09"/></radialGradient><filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2.2" result="s"/><feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge></filter><clipPath id="bowlclip"><path d="M108 190 C108 270 150 318 200 322 C250 318 292 270 292 190Z"/></clipPath></defs>`;
-function pearl(x,y,r,o){return `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff8e0" opacity="${o}" filter="url(#glow)"/>`}
-function starSVG(n){let rays='',beads='';
- for(let i=0;i<40;i++){const ang=i*9,long=(i%5===0?128:(i%2===0?96:76)),lit=i<n,L=lit?long:long*.6,r0=34,w=lit?(i%5===0?5.2:3.4):2.2,mid=r0+(L-r0)*.38;
-  rays+=`<g transform="translate(200 225) rotate(${ang})"><path d="M0 -${r0} Q ${w} -${mid} 0 -${L} Q -${w} -${mid} 0 -${r0}Z" fill="${lit?'url(#ray)':'none'}" stroke="${lit?'#f6e2b0':'#bca174'}" stroke-width="${lit?.6:.5}" opacity="${lit?.95:.38}"/>${lit?`<circle cx="0" cy="-${L+5}" r="${i%5===0?1.9:1.2}" fill="#fff8e0" filter="url(#glow)"/>`:''}</g>`;
-  const a=(ang-90)*Math.PI/180;beads+=`<circle cx="${200+Math.cos(a)*27}" cy="${225+Math.sin(a)*27}" r="${lit?1.1:.7}" fill="${lit?'#fff3cf':'#bca174'}" opacity="${lit?.95:.35}"/>`}
- let ros='';for(let k=0;k<8;k++)ros+=`<path transform="translate(200 225) rotate(${k*45})" d="M0 -6 Q 5 -15 0 -23 Q -5 -15 0 -6Z" fill="rgba(255,240,200,.16)" stroke="#f3dca6" stroke-width=".6"/>`;
- let m21='';if(n>=21)for(let k=0;k<12;k++){const a=k*30*Math.PI/180;m21+=pearl(200+Math.cos(a)*170,225+Math.sin(a)*170,1.7,.9)}
- return `<svg viewBox="0 0 400 460" role="img" aria-label="Звезда Венеры, ${n} из 40 лучей">${svgDef}${n>=40?`<circle cx="200" cy="225" r="190" fill="url(#halo)"/>`:''}<path d="M178 -4 L200 69 M222 -4 L200 69" stroke="url(#metal)" stroke-width="1.2" fill="none" opacity=".8"/><circle cx="200" cy="70" r="3" fill="url(#gem)" filter="url(#glow)"/><circle cx="200" cy="225" r="156" fill="none" stroke="${gold}" opacity=".3" stroke-width=".5"/><circle cx="200" cy="225" r="111" fill="none" stroke="${gold}" opacity=".2" stroke-dasharray="1 7" stroke-width=".6"/>${rays}${beads}<circle cx="200" cy="225" r="31" fill="none" stroke="${gold}" opacity=".5" stroke-width=".6"/>${ros}<circle cx="200" cy="225" r="5" fill="url(#gem)" opacity="${n?1:.6}" filter="url(#glow)"/>${n>=7?`<circle cx="200" cy="225" r="160" fill="none" stroke="${gold}" stroke-width=".6" opacity=".6" stroke-dasharray="1 8"/>`:''}${n>=21?`<circle cx="200" cy="225" r="170" fill="none" stroke="#fce6b1" stroke-width=".5" opacity=".5"/>${m21}`:''}${n>=40?`<circle cx="200" cy="225" r="181" fill="none" stroke="#fff6c8" stroke-width=".7" opacity=".5" stroke-dasharray="1 5"/>`:''}</svg>`}
-function lotusFlower(cx,cy,col,lvl){const lit=lvl>.2;let p='';
- for(let k=0;k<8;k++)p+=`<path transform="rotate(${k*45})" d="M0 -5 Q 6 -14 0 -24 Q -6 -14 0 -5Z" fill="${lit?col:'none'}" fill-opacity=".26" stroke="${lit?col:'#a08a6c'}" stroke-width=".7" opacity="${lit?.95:.35}"/>`;
- for(let k=0;k<8;k++)p+=`<path transform="rotate(${k*45+22.5})" d="M0 -3 Q 3.6 -8 0 -14 Q -3.6 -8 0 -3Z" fill="${lit?'#fff7dc':'none'}" fill-opacity=".5" stroke="${lit?'#fff0c8':'#a08a6c'}" stroke-width=".5" opacity="${lit?.95:.3}"/>`;
- return `<g transform="translate(${cx} ${cy})"${lit?' filter="url(#glow)"':''}>${p}<circle r="2" fill="${lit?'#fffdf0':'#4d4030'}"/></g>`}
-function lotusSVG(n){const colors=['#f09a95','#f3b07a','#f6d484','#9bdcb0','#9fdcea','#8fb4ee','#f2e6c8'];let fl='';
- for(let i=0;i<7;i++){const cy=352-i*47,lv=Math.min(1,Math.max(0,(n-i*5.5)/5.5));fl+=`<g opacity="${lv>.2?.55+.45*lv:.7}">${lotusFlower(200,cy,colors[i],lv)}</g>`;if(i<6)fl+=pearl(200,cy-23.5,.9,lv>.9?.8:.25)}
- return `<svg viewBox="0 0 400 460" role="img" aria-label="Семь лотосов, ${n} из 40 шагов">${svgDef}${n>=40?`<ellipse cx="200" cy="228" rx="150" ry="215" fill="url(#halo)"/>`:''}<path d="M178 -4 L200 42 M222 -4 L200 42" stroke="url(#metal)" stroke-width="1.2" fill="none" opacity=".8"/><circle cx="200" cy="44" r="3.2" fill="url(#gem)" filter="url(#glow)"/><ellipse cx="200" cy="228" rx="99" ry="182" fill="rgba(248,214,151,.03)" stroke="url(#metal)" stroke-width="1.4"/><ellipse cx="200" cy="228" rx="90" ry="173" fill="none" stroke="${gold}" opacity=".4" stroke-width=".5" stroke-dasharray="1 6"/><path d="M200 70 L200 386" stroke="#f9d9aa" opacity=".25" stroke-width=".6" stroke-dasharray="1 6"/>${fl}<circle cx="200" cy="412" r="2.6" fill="url(#hot)" filter="url(#glow)"/>${n>=7?`<ellipse cx="200" cy="228" rx="106" ry="190" stroke="${gold}" stroke-width=".6" fill="none" opacity=".55" stroke-dasharray="1 8"/>`:''}${n>=21?`<ellipse cx="200" cy="228" rx="114" ry="200" stroke="${gold}" stroke-width=".5" fill="none" opacity=".5"/>`:''}${n>=40?`<ellipse cx="200" cy="228" rx="123" ry="210" stroke="#fff2b7" stroke-width=".7" stroke-dasharray="1 5" fill="none" opacity=".6"/>`:''}</svg>`}
-function cupSVG(n){const lv=n/40,bowl='M108 190 C108 270 150 318 200 322 C250 318 292 270 292 190',H=128*lv,y=322-H;let dots='';
- for(let i=0;i<n;i++){const x=140+((i*37)%120),dy=y+10+((i*23)%Math.max(12,H-14));dots+=`<circle cx="${x}" cy="${Math.min(312,dy)}" r="${i%4===0?1.9:1}" fill="#fff9d8" opacity=".85" filter="url(#glow)"/>`}
- return `<svg viewBox="0 0 400 460" role="img" aria-label="Сосуд амриты, ${n} из 40 капель">${svgDef}${n>=40?`<ellipse cx="200" cy="250" rx="170" ry="200" fill="url(#halo)"/>`:''}<path d="M180 -4 L200 62 M220 -4 L200 62" stroke="url(#metal)" stroke-width="1.2" fill="none" opacity=".8"/><circle cx="200" cy="66" r="3.4" fill="url(#gem)" stroke="#f1d6a5" stroke-width=".5" filter="url(#glow)"/><path d="M200 90 Q 213 114 200 134 Q 187 114 200 90Z" fill="${n?'url(#hot)':'none'}" fill-opacity=".7" stroke="#f6e2b0" stroke-width=".6" opacity="${n?.95:.4}"${n?' filter="url(#glow)"':''}/><g clip-path="url(#bowlclip)"><rect x="100" y="${y}" width="200" height="${H+4}" fill="url(#water)"/>${dots}</g><path d="M90 ${y} Q 120 ${y-3} 150 ${y} T 210 ${y} T 270 ${y} T 310 ${y}" stroke="#fff3c4" stroke-width=".8" fill="none" opacity="${n?.8:0}" clip-path="url(#bowlclip)"/><path d="${bowl}" fill="rgba(240,200,130,.03)" stroke="url(#metal)" stroke-width="1.6"/><ellipse cx="200" cy="190" rx="92" ry="11" fill="none" stroke="url(#metal)" stroke-width="1.2"/><ellipse cx="200" cy="190" rx="85" ry="7" fill="none" stroke="${gold}" stroke-width=".4" opacity=".4"/><path d="M200 232 Q 210 254 200 276 Q 190 254 200 232Z" fill="none" stroke="${gold}" stroke-width=".6" opacity=".5"/><path d="M200 322 L200 376" stroke="#e8cf9a" stroke-width="1.3" fill="none"/><path d="M200 376 Q 187 388 170 394 M200 376 Q 213 388 230 394" stroke="#e8cf9a" stroke-width=".9" fill="none"/><ellipse cx="200" cy="346" rx="9" ry="4.5" fill="none" stroke="url(#metal)" stroke-width="1"/><path d="M152 396 Q200 372 248 396" fill="none" stroke="url(#metal)" stroke-width="1.4"/><path d="M144 398 L256 398" stroke="#e8cf9a" stroke-width="1" fill="none"/>${n>=7?`<ellipse cx="200" cy="250" rx="125" ry="150" fill="none" stroke="${gold}" stroke-width=".6" opacity=".5" stroke-dasharray="1 7"/>`:''}${n>=21?`<ellipse cx="200" cy="250" rx="138" ry="164" fill="none" stroke="${gold}" stroke-width=".5" opacity=".45"/>`:''}${n>=40?`<ellipse cx="200" cy="250" rx="152" ry="178" fill="none" stroke="#fff2b7" stroke-width=".7" opacity=".55" stroke-dasharray="1 5"/>`:''}</svg>`}
-const amuletSVG=(type,n)=>type==='venus'?starSVG(n):type==='lotus'?lotusSVG(n):cupSVG(n);
-function stage(n){if(n===0)return 'Первая искра уже ждёт тебя';if(n<7)return 'Появились первые элементы света';if(n<21)return 'Открылся новый золотой узор';if(n<40)return 'Кристалл и сияние становятся ярче';return 'Все сорок шагов пройдены · амулет раскрыт'}
-
-let S=null;
+const API='';const INIT=tg?tg.initData:'';const $=id=>document.getElementById(id);
+const ST=[0,7,14,21,30,40];
+const CR={
+sun:{name:'Солнечная',desc:'Свет и лучи',cap:['Первая искра','Появляется свет','Раскрываются лучи','Добавляются жемчужины','Усиление сияния','Корона полностью раскрыта']},
+moon:{name:'Лунная',desc:'Тишина и жемчуг',cap:['Первая искра','Появляется луна','Раскрываются узоры','Добавляются жемчужины','Усиление сияния','Корона полностью раскрыта']},
+star:{name:'Звёздная',desc:'Грани и кристаллы',cap:['Первая искра','Появляется звезда','Раскрываются грани','Добавляются кристаллы','Усиление сияния','Корона полностью раскрыта']}};
+const sIdx=n=>{let i=0;ST.forEach((t,k)=>{if(n>=t)i=k});return i};
+const img=(k,i)=>'/s/c/'+k+(i+1)+'.jpg';
 let SND=localStorage.getItem('snd')!=='0',AC=null;
 function tone(f,t0,dur,vol){if(!SND)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0.0001,AC.currentTime+t0);g.gain.exponentialRampToValueAtTime(vol,AC.currentTime+t0+0.02);g.gain.exponentialRampToValueAtTime(0.0001,AC.currentTime+t0+dur);o.connect(g);g.connect(AC.destination);o.start(AC.currentTime+t0);o.stop(AC.currentTime+t0+dur+0.05)}catch(e){}}
 const chime={step:()=>{tone(659,0,1.4,.12);tone(988,.12,1.6,.09)},pearl:()=>{tone(1319,0,1.2,.08);tone(1760,.1,1.4,.06)},ms:()=>{[523,659,784,1047].forEach((f,i)=>tone(f,i*.18,2,.1))},pick:()=>tone(784,0,1.2,.1)};
 function buzz(){try{tg&&tg.HapticFeedback&&tg.HapticFeedback.notificationOccurred('success')}catch(e){}}
-const MS={7:['Семь шагов','Первая веха. Узор, который был скрыт, открылся. Ты уже в пути.'],21:['Двадцать один шаг','Середина пути. В амулете проявился кристалл и стало больше света.'],40:['Сорок шагов','Путь пройден. Амулет раскрыт полностью. Он останется с тобой.']};
-function renderPath(){let h='';for(let i=1;i<=40;i++){const ms=(i===7||i===21||i===40);h+='<i class="'+(i<=S.steps?'on ':'')+(ms?'ms ':'')+(i===S.steps?'cur':'')+'">'+(ms?'✦':i)+'</i>'}$('path').innerHTML=h;
- const nx=[7,21,40].find(m=>m>S.steps);$('next').textContent=nx?('До следующей вехи: '+(nx-S.steps)+' '+(nx-S.steps===1?'шаг':((nx-S.steps)%10>=2&&(nx-S.steps)%10<=4&&((nx-S.steps)<12||(nx-S.steps)>14)?'шага':'шагов'))):'Все сорок шагов пройдены ✦'}
-function snd(){$('snd').textContent=SND?'🔔 Звук: вкл':'🔕 Звук: выкл'}
 
-
+const MSB={7:'Первая веха. ',14:'Ты идёшь дальше. ',21:'Середина пути. ',30:'Осталось десять шагов. ',40:'Путь пройден. Корона раскрыта полностью и останется с тобой. '};
+const NUMW={7:'Семь шагов',14:'Четырнадцать шагов',21:'Двадцать один шаг',30:'Тридцать шагов',40:'Сорок шагов'};
 const DECO={pearl:['Жемчужина','#fff3d6'],star:['Звёздочка','#ffe08a'],flower:['Цветок','#f7b9a8'],drop:['Капля росы','#bfe6f2'],feather:['Пёрышко','#cfe9cf'],moon:['Месяц','#fff0c4'],crystal:['Кристалл','#d6f1ee'],leaf:['Листик','#bddf9a'],diamond:['Алмаз','#e4f4ff']};
 function decoShape(k,c){const l=`fill="none" stroke="${c}" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round"`;
  if(k==='diamond')return `<path d="M-7 -3 L-3.5 -8 L3.5 -8 L7 -3 L0 8Z" fill="${c}" fill-opacity=".22" stroke="${c}" stroke-width=".8"/><path d="M-7 -3 L7 -3 M-3.5 -8 L-1.8 -3 L0 8 L1.8 -3 L3.5 -8 M-1.8 -3 L0 -8 L1.8 -3" ${l} opacity=".75"/><path d="M-3 -3 L0 8 L-1.8 -3Z" fill="#fff" fill-opacity=".35"/>`;
@@ -108,41 +84,54 @@ function decoShape(k,c){const l=`fill="none" stroke="${c}" stroke-width=".9" str
  if(k==='moon')return `<path d="M3 -9 A9 9 0 1 0 8 4 A7 7 0 1 1 3 -9Z" fill="${c}" fill-opacity=".4" stroke="${c}" stroke-width=".8"/>`;
  if(k==='crystal')return `<path d="M0 -9 L6 -2 L0 9 L-6 -2Z" fill="${c}" fill-opacity=".3" stroke="${c}" stroke-width=".8"/><path d="M-6 -2 L6 -2 M0 -9 L-2 -2 L0 9 M0 -9 L2 -2 L0 9" ${l} opacity=".6"/>`;
  return `<path d="M-7 7 Q-8 -6 7 -8 Q8 6 -7 7Z" fill="${c}" fill-opacity=".28" stroke="${c}" stroke-width=".8"/><path d="M-6 6 L5 -6" ${l} opacity=".8"/>`}
+
 function rnd(seed){let a=seed>>>0||1;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
-const AREA={venus:[200,225,[165,200],[165,200]],lotus:[200,228,[118,168],[196,222]],amrita:[200,250,[128,172],[152,196]]};
-function decoLayer(kind,decos,seed){const a=AREA[kind],r=rnd(seed*7+13);let out='',pts=[];const base=r()*360;
- decos.slice(0,60).forEach((d,i)=>{let best=null;for(let t=0;t<14;t++){const ang=(base+i*137.5+(r()-.5)*70)*Math.PI/180,k=r();const x=a[0]+Math.cos(ang)*(a[2][0]+(a[2][1]-a[2][0])*k),y=a[1]+Math.sin(ang)*(a[3][0]+(a[3][1]-a[3][0])*k);if(x<14||x>386||y<14||y>446)continue;const m=pts.reduce((q,p)=>Math.min(q,Math.hypot(p[0]-x,p[1]-y)),99);if(!best||m>best[2])best=[x,y,m];if(m>20)break}
-  if(!best)return;pts.push(best);const c=(DECO[d]||DECO.pearl)[1],sc=.85+r()*.45,rot=r()*50-25;
-  out+=`<g transform="translate(${best[0].toFixed(1)} ${best[1].toFixed(1)}) rotate(${rot.toFixed(0)}) scale(${sc.toFixed(2)})" filter="url(#glow)" class="tw" style="animation-delay:${(r()*4).toFixed(1)}s">${decoShape(d,c)}${d==='diamond'?glint(r()):''}</g>`});return out}
+
+const AREA=[228,205,[40,215],[18,92]];
+function decoLayer(decos,seed){const a=AREA,r=rnd(seed*7+13);let out='',pts=[];const base=r()*360;
+ decos.slice(0,60).forEach((d,i)=>{let best=null;for(let t=0;t<16;t++){const ang=(base+i*137.5+(r()-.5)*70)*Math.PI/180,k=r(),k2=r();const x=a[0]+Math.cos(ang)*(a[2][0]+(a[2][1]-a[2][0])*k),y=a[1]+Math.sin(ang)*(a[3][0]+(a[3][1]-a[3][0])*k2);if(x<14||x>443||y<120||y>300)continue;const m=pts.reduce((q,p)=>Math.min(q,Math.hypot(p[0]-x,p[1]-y)),99);if(!best||m>best[2])best=[x,y,m];if(m>17)break}
+  if(!best)return;pts.push(best);const c=(DECO[d]||DECO.pearl)[1],sc=.62+r()*.38,rot=r()*50-25;
+  out+='<g transform="translate('+best[0].toFixed(1)+' '+best[1].toFixed(1)+') rotate('+rot.toFixed(0)+') scale('+sc.toFixed(2)+')" filter="url(#glow)" class="tw" style="animation-delay:'+(r()*4).toFixed(1)+'s">'+decoShape(d,c)+(d==='diamond'?glint(r()):'')+'</g>'});return out}
 function glint(x){const dl=(x*5).toFixed(2);return `<g class="gl2" style="animation-delay:${dl}s"><path d="M0 -12 L0 12 M-12 0 L12 0" stroke="#fff" stroke-width=".55" stroke-linecap="round" fill="none"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#fff" stroke-width=".35" stroke-linecap="round" fill="none" opacity=".7"/><circle r="1.1" fill="#fff"/></g><g class="gl2 g3" style="animation-delay:${(x*5+1.3).toFixed(2)}s"><path d="M5.5 -9 L5.5 -4 M3 -6.5 L8 -6.5" stroke="#fff" stroke-width=".5" stroke-linecap="round" fill="none"/></g>`}
 function openDeco(w){$('dcw').value=w;$('dc').classList.add('on')}
-
-let LIGHT=localStorage.getItem('theme2')!=='dark';
-function theme(){document.body.classList.toggle('light',LIGHT);$('th').textContent=LIGHT?'🌙 Тема: тёмная':'☀ Тема: светлая';try{tg.setBackgroundColor(LIGHT?'#f3e6cf':'#1a130d');tg.setHeaderColor(LIGHT?'#f3e6cf':'#1a130d')}catch(e){}}
-async function makeImage(){const W=1080,H=1350,cv=document.createElement('canvas');cv.width=W;cv.height=H;const x=cv.getContext('2d');
- const g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#1a130d');g.addColorStop(.55,'#2e2114');g.addColorStop(1,'#0f0b07');x.fillStyle=g;x.fillRect(0,0,W,H);
- x.strokeStyle='#b7955f';x.lineWidth=3;x.strokeRect(30,30,W-60,H-60);x.lineWidth=1;x.strokeRect(44,44,W-88,H-88);
- x.textAlign='center';x.fillStyle='#fff1d2';x.font='600 54px Georgia,serif';x.fillText('Твой амулет пробуждения',W/2,128);
- const sv=$('amulet').querySelector('svg').cloneNode(true);sv.setAttribute('xmlns','http://www.w3.org/2000/svg');sv.setAttribute('width',800);sv.setAttribute('height',920);
- sv.querySelectorAll('.gl2').forEach(e=>e.remove());sv.querySelectorAll('[class]').forEach(e=>e.removeAttribute('class'));
- const url='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(new XMLSerializer().serializeToString(sv));
- const img=await new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=url});x.drawImage(img,140,170,800,920);
- x.fillStyle='#f1d6a5';x.font='500 50px Georgia,serif';x.fillText(S.steps+' из 40',W/2,1175);
- x.fillStyle='#b9a99a';x.font='400 30px Georgia,serif';x.fillText('Клуб легализации твоей силы',W/2,1245);return cv.toDataURL('image/jpeg',.92)}
-async function saveImg(){const b=$('sv');b.disabled=true;b.textContent='Собираю картинку…';try{const r=await call('save',{img:await makeImage()});if(r.ok){chime.pick();buzz();toast('Амулет отправлен тебе в чат с ботом ✦')}else toast('Нажми «Старт» в чате с @KsuEidos_bot и повтори')}catch(e){toast('Не получилось, попробуй ещё раз')}b.disabled=false;b.textContent='💾 Сохранить амулет картинкой'}
-function toast(m){const e=$('toast');e.textContent=m;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2200)}
-async function call(path,body){const r=await fetch('/api/'+path,{method:'POST',headers:{'X-Init-Data':INIT,'Content-Type':'application/json'},body:JSON.stringify(body||{})});if(!r.ok)throw new Error(r.status);return r.json()}
+let S=null,NIGHT=localStorage.getItem('theme3')==='night';
+function theme(){document.body.classList.toggle('night',NIGHT);$('th').textContent=NIGHT?'☀ Фон: рассвет':'🌙 Фон: ночь';try{tg.setBackgroundColor(NIGHT?'#1d140c':'#f8eddb');tg.setHeaderColor(NIGHT?'#1d140c':'#f8eddb')}catch(e){}}
+function snd(){$('snd').textContent=SND?'🔔 Звук: вкл':'🔕 Звук: выкл'}
+function crownHTML(k,n){const i=sIdx(n),nx=i<5?i+1:null,t=nx?(n-ST[i])/(ST[nx]-ST[i]):0;
+ return '<div class="frame"><img src="'+img(k,i)+'" alt="">'+(nx&&t>0?'<img class="o" style="opacity:'+t.toFixed(2)+'" src="'+img(k,nx)+'" alt="">':'')+'<svg viewBox="0 0 457 385">'+decoLayer(S.decos||[],S.seed||1)+'</svg></div>'}
+function renderPath(){let h='';for(let i=1;i<=40;i++){const ms=ST.includes(i);h+='<i class="'+(i<=S.steps?'on ':'')+(ms?'ms ':'')+(i===S.steps?'cur':'')+'">'+(ms?'✦':i)+'</i>'}$('path').innerHTML=h;
+ const nx=ST.find(m=>m>S.steps);const d=nx?nx-S.steps:0;$('next').textContent=nx?('До следующей ступени: '+d+' '+(d===1?'шаг':(d%10>=2&&d%10<=4&&(d<12||d>14)?'шага':'шагов'))):'Все сорок шагов пройдены ✦';
+ const k=S.kind,cur=sIdx(S.steps);$('tl').innerHTML=ST.map((t,i)=>i<=cur?'<div><div class="im"><img src="'+img(k,i)+'" alt=""></div><b>'+(i===0?'День 1':'День '+t)+'</b>'+CR[k].cap[i]+'</div>':'<div class="lk"><div class="im">✦</div><b>День '+t+'</b>ещё скрыто</div>').join('')}
+function showPick(){$('cards').innerHTML=['sun','moon','star'].map(k=>'<div class="cc" data-k="'+k+'"><img src="'+img(k,0)+'" alt=""><h2>'+CR[k].name+' корона</h2><span>'+CR[k].desc+'</span></div>').join('');
+ document.querySelectorAll('.cc').forEach(b=>b.onclick=async()=>{try{S=await call('choose',{kind:b.dataset.k});chime.pick();buzz();show();toast('Выбрано: '+CR[S.kind].name.toLowerCase()+' корона')}catch(e){toast('Не получилось, попробуй ещё раз')}})}
+function toast(m){const e=$('toast');e.textContent=m;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2400)}
+async function call(path,body){const r=await fetch(API+'/api/'+path,{method:'POST',headers:{'X-Init-Data':INIT,'Content-Type':'application/json'},body:JSON.stringify(body||{})});if(!r.ok)throw new Error(r.status);return r.json()}
 function show(){['err','pick','main'].forEach(x=>$(x).classList.add('hide'));
  if(!S){$('err').classList.remove('hide');return}
- if(!S.kind){$('pick').classList.remove('hide');return}
- $('main').classList.remove('hide');$('nm').textContent=names[S.kind].toUpperCase();$('amulet').innerHTML=amuletSVG(S.kind,S.steps).replace('</svg>',decoLayer(S.kind,S.decos||[],S.seed||1)+'</svg>');
- $('n').textContent=S.steps;$('fill').style.width=(S.steps/40*100)+'%';$('stage').textContent=stage(S.steps);$('pe').textContent=S.pearls;renderPath();snd();$('pr').innerHTML=(S.decos||[]).slice(0,60).map(d=>'<b title="'+(DECO[d]||DECO.pearl)[0]+'"><svg viewBox="-11 -11 22 22" width="22" height="22">'+decoShape(d,(DECO[d]||DECO.pearl)[1])+'</svg></b>').join('');
- $('bm').disabled=S.morning||S.steps>=40&&!S.morning&&false;$('be').disabled=S.evening;
- $('bm').textContent=S.morning?'✓ Утро отмечено':'☀ Отметить утро';$('be').textContent=S.evening?'✓ Вечер отмечен':'☾ Отметить вечер'}
-document.querySelectorAll('[data-k]').forEach(b=>b.onclick=async()=>{try{S=await call('choose',{kind:b.dataset.k});chime.pick();buzz();show();toast('Выбрано: '+names[S.kind])}catch(e){toast('Не получилось, попробуй ещё раз')}});
-async function mark(w,deco){const before=S.steps,bp=S.pearls;try{S=await call('mark',{when:w,deco:deco});show();const up=S.steps>before;buzz();$('amulet').classList.remove('glow');void $('amulet').offsetWidth;$('amulet').classList.add('glow');
- if(up&&MS[S.steps]){chime.ms();$('mst').textContent=MS[S.steps][0];$('msp').textContent=MS[S.steps][1];$('ms').classList.add('on')}
- else if(up){chime.step();toast('В амулете появился новый свет, украшение легло на место ✦')}else{chime.pearl();toast('Ещё одно украшение легло на амулет ✧')}}catch(e){toast('Не получилось, попробуй ещё раз')}}
-$('sv').onclick=saveImg;$('th').onclick=()=>{LIGHT=!LIGHT;localStorage.setItem('theme2',LIGHT?'light':'dark');theme()};$('msb').onclick=()=>$('ms').classList.remove('on');$('snd').onclick=()=>{SND=!SND;localStorage.setItem('snd',SND?'1':'0');snd();if(SND)chime.pick()};const need=w=>S.tdeco?mark(w,S.tdeco):openDeco(w);$('bm').onclick=()=>need('morning');$('be').onclick=()=>need('evening');$('dcx').onclick=()=>$('dc').classList.remove('on');document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{$('dc').classList.remove('on');chime.pick();mark($('dcw').value,b.dataset.d)});$('chg').onclick=()=>{S.kind=null;show()};
+ if(!S.kind||!CR[S.kind]){showPick();$('pick').classList.remove('hide');return}
+ $('main').classList.remove('hide');const k=S.kind;$('nm').textContent=CR[k].name;$('amulet').innerHTML=crownHTML(k,S.steps);
+ $('n').textContent=S.steps;$('fill').style.width=(S.steps/40*100)+'%';$('stage').textContent=CR[k].cap[sIdx(S.steps)];$('pe').textContent=S.pearls;renderPath();snd();
+ $('pr').innerHTML=(S.decos||[]).slice(0,60).map(d=>'<b title="'+(DECO[d]||DECO.pearl)[0]+'"><svg viewBox="-11 -11 22 22" width="22" height="22">'+decoShape(d,(DECO[d]||DECO.pearl)[1])+'</svg></b>').join('');
+ $('bm').disabled=S.morning;$('be').disabled=S.evening;$('bm').textContent=S.morning?'✓ Утро отмечено':'☀ Отметить утро';$('be').textContent=S.evening?'✓ Вечер отмечен':'☾ Отметить вечер'}
+async function mark(w,deco){const before=S.steps;try{S=await call('mark',{when:w,deco:deco});show();const up=S.steps>before;buzz();$('amulet').classList.remove('glow');void $('amulet').offsetWidth;$('amulet').classList.add('glow');
+ if(up&&NUMW[S.steps]){chime.ms();$('mst').textContent=NUMW[S.steps];$('msp').textContent=MSB[S.steps]+CR[S.kind].cap[sIdx(S.steps)]+'.';$('ms').classList.add('on')}
+ else if(up){chime.step();toast('Корона стала светлее, украшение легло на место ✦')}else{chime.pearl();toast('Ещё одно украшение легло на корону ✧')}}catch(e){toast('Не получилось, попробуй ещё раз')}}
+function loadImg(src){return new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src})}
+async function makeImage(){const W=1080,H=1350,cv=document.createElement('canvas');cv.width=W;cv.height=H;const x=cv.getContext('2d');const k=S.kind,i=sIdx(S.steps),nx=i<5?i+1:null,t=nx?(S.steps-ST[i])/(ST[nx]-ST[i]):0;
+ const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#f8eddb');g.addColorStop(1,'#e8cfa4');x.fillStyle=g;x.fillRect(0,0,W,H);
+ x.strokeStyle='#b98a45';x.lineWidth=3;x.strokeRect(30,30,W-60,H-60);x.lineWidth=1;x.strokeRect(44,44,W-88,H-88);
+ x.textAlign='center';x.fillStyle='#8a7352';x.font='600 26px Georgia,serif';x.fillText('К Л У Б   Л Е Г А Л И З А Ц И И   Т В О Е Й   С И Л Ы',W/2,110);
+ x.fillStyle='#4a3420';x.font='600 62px Georgia,serif';x.fillText('Твоя корона пробуждения',W/2,190);
+ const bx=90,by=240,bw=900,bh=Math.round(900*385/457);x.save();x.beginPath();x.roundRect(bx,by,bw,bh,36);x.clip();
+ x.drawImage(await loadImg(img(k,i)),bx,by,bw,bh);if(nx&&t>0){x.globalAlpha=t;x.drawImage(await loadImg(img(k,nx)),bx,by,bw,bh);x.globalAlpha=1}
+ const sv=document.createElement('div');sv.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 457 385" width="'+bw+'" height="'+bh+'"><defs><radialGradient id="gem"><stop stop-color="#fff"/><stop offset=".5" stop-color="#fff0c8"/><stop offset="1" stop-color="#e8c780"/></radialGradient><filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2" result="s"/><feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+decoLayer(S.decos||[],S.seed||1).replace(/<g class="gl2[^>]*>.*?<\/g>/g,'').replace(/ class="[^"]*"/g,'')+'</svg>';
+ x.drawImage(await loadImg('data:image/svg+xml;charset=utf-8,'+encodeURIComponent(sv.innerHTML)),bx,by,bw,bh);x.restore();
+ x.strokeStyle='#d9b46c';x.lineWidth=2;x.beginPath();x.roundRect(bx,by,bw,bh,36);x.stroke();
+ x.fillStyle='#b98a45';x.font='600 76px Georgia,serif';x.fillText(S.steps+' из 40',W/2,by+bh+110);
+ x.fillStyle='#6a5334';x.font='italic 40px Georgia,serif';x.fillText(CR[k].cap[sIdx(S.steps)],W/2,by+bh+170);return cv.toDataURL('image/jpeg',.92)}
+async function saveImg(){const b=$('sv');b.disabled=true;b.textContent='Собираю картинку…';try{const r=await call('save',{img:await makeImage()});if(r.ok){chime.pick();buzz();toast('Корона отправлена тебе в чат с ботом ✦')}else toast('Нажми «Старт» в чате с @KsuEidos_bot и повтори')}catch(e){toast('Не получилось, попробуй ещё раз')}b.disabled=false;b.textContent='💾 Сохранить корону картинкой'}
+$('sv').onclick=saveImg;$('th').onclick=()=>{NIGHT=!NIGHT;localStorage.setItem('theme3',NIGHT?'night':'dawn');theme()};$('msb').onclick=()=>$('ms').classList.remove('on');$('snd').onclick=()=>{SND=!SND;localStorage.setItem('snd',SND?'1':'0');snd();if(SND)chime.pick()};
+const need=w=>S.tdeco?mark(w,S.tdeco):openDeco(w);$('bm').onclick=()=>need('morning');$('be').onclick=()=>need('evening');$('dcx').onclick=()=>$('dc').classList.remove('on');
+document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{$('dc').classList.remove('on');chime.pick();mark($('dcw').value,b.dataset.d)});$('chg').onclick=()=>{S.kind=null;show()};
 Object.keys(DECO).forEach(k=>{const e=$('di_'+k);if(e)e.innerHTML=decoShape(k,DECO[k][1])});theme();(async()=>{try{S=await call('state')}catch(e){S=null}show()})();
 </script></body></html>
