@@ -73,7 +73,7 @@ async def api(req):
             st = await state(uid)
             fd = aiohttp.FormData()
             fd.add_field('chat_id', str(uid))
-            fd.add_field('caption', '🌙 Твоя корона пробуждения · %d из 40\nМожно сохранить на телефон и переслать.' % st['steps'])
+            fd.add_field('caption', '🌙 Твой венец пробуждения · %d из 40\nМожно сохранить на телефон и переслать.' % st['steps'])
             fd.add_field('photo', raw, filename='amulet.jpg', content_type='image/jpeg')
             async with sess().post(f'https://api.telegram.org/bot{TOKEN}/sendPhoto', data=fd) as r:
                 j = await r.json()
